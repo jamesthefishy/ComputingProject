@@ -1,3 +1,3 @@
 # ComputingProject - James Page 2018/19
 # Neural Network Music Recommendation
-# Analysis - Proposed solution unfinished
+# Analysis - 1st Version Complete 11/10/18
