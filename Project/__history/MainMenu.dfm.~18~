@@ -1,0 +1,92 @@
+object frmMainMenu: TfrmMainMenu
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'Music Recommendation'
+  ClientHeight = 610
+  ClientWidth = 810
+  Color = 13021861
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  DesignSize = (
+    810
+    610)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblTitle: TLabel
+    Left = 229
+    Top = 49
+    Width = 377
+    Height = 41
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'Song Suggestion Service'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -33
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+    ExplicitLeft = 224
+    ExplicitTop = 48
+  end
+  object shpEntryBackGroundLeft: TShape
+    Left = 24
+    Top = 128
+    Width = 393
+    Height = 441
+    Brush.Color = 14471111
+    Pen.Color = 14471111
+    Shape = stRoundSquare
+  end
+  object shpEntryBackhroundRight: TShape
+    Left = 448
+    Top = 176
+    Width = 337
+    Height = 353
+    Brush.Color = 14471111
+    Pen.Color = 14471111
+    Shape = stRoundSquare
+  end
+  object edtSongEntry1: TEdit
+    Left = 64
+    Top = 256
+    Width = 313
+    Height = 33
+    Color = 13021861
+    Constraints.MinHeight = 30
+    TabOrder = 0
+    Text = 'edtSongEntry1'
+  end
+  object edtSongEntry3: TEdit
+    Left = 64
+    Top = 384
+    Width = 313
+    Height = 30
+    Color = 13021861
+    Constraints.MinHeight = 30
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    Text = 'Edit1'
+  end
+  object edtSongEntry2: TEdit
+    Left = 64
+    Top = 320
+    Width = 313
+    Height = 33
+    Color = 13021861
+    Constraints.MinHeight = 30
+    TabOrder = 2
+    Text = 'Edit1'
+  end
+end
