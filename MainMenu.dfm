@@ -1,0 +1,162 @@
+object frmMainMenu: TfrmMainMenu
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'Music Recommendation'
+  ClientHeight = 610
+  ClientWidth = 810
+  Color = 13021861
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  DesignSize = (
+    810
+    610)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblTitle: TLabel
+    Left = 205
+    Top = 49
+    Width = 437
+    Height = 48
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'Song Suggestion Service'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -40
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object shpEntryBackGroundLeft: TShape
+    Left = 24
+    Top = 128
+    Width = 393
+    Height = 441
+    Brush.Color = 14471111
+    Pen.Color = 14471111
+    Shape = stRoundSquare
+  end
+  object shpEntryBackhroundRight: TShape
+    Left = 448
+    Top = 152
+    Width = 337
+    Height = 281
+    Brush.Color = 14471111
+    Pen.Color = 14471111
+    Shape = stRoundSquare
+  end
+  object lblInstructionsRight1: TLabel
+    Left = 504
+    Top = 176
+    Width = 217
+    Height = 24
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'Song Suggestion Service'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object lblInstructionsLeft: TLabel
+    Left = 82
+    Top = 169
+    Width = 295
+    Height = 33
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'Song Suggestion Service'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -27
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object Label1: TLabel
+    Left = 504
+    Top = 206
+    Width = 217
+    Height = 24
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'Song Suggestion Service'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object edtSongEntry1: TEdit
+    Left = 64
+    Top = 280
+    Width = 313
+    Height = 32
+    Color = 13021861
+    Constraints.MinHeight = 30
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+  end
+  object edtSongEntry3: TEdit
+    Left = 64
+    Top = 392
+    Width = 313
+    Height = 32
+    Color = 13021861
+    Constraints.MinHeight = 30
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object edtSongEntry2: TEdit
+    Left = 64
+    Top = 336
+    Width = 313
+    Height = 32
+    Color = 13021861
+    Constraints.MinHeight = 30
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+  object edtCodeEntry: TEdit
+    Left = 504
+    Top = 328
+    Width = 225
+    Height = 32
+    Color = 13021861
+    Constraints.MinHeight = 30
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+  end
+end
