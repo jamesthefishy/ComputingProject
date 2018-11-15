@@ -44,7 +44,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object shpEntryBackhroundRight: TShape
     Left = 448
-    Top = 152
+    Top = 160
     Width = 337
     Height = 281
     Brush.Color = 14471111
@@ -54,11 +54,11 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsRight1: TLabel
     Left = 504
     Top = 176
-    Width = 217
+    Width = 219
     Height = 24
     Alignment = taCenter
     Anchors = []
-    Caption = 'Song Suggestion Service'
+    Caption = 'Would you like to recall a'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 5123625
     Font.Height = -20
@@ -67,33 +67,97 @@ object frmMainMenu: TfrmMainMenu
     ParentFont = False
     Layout = tlBottom
   end
-  object lblInstructionsLeft: TLabel
-    Left = 82
-    Top = 169
-    Width = 295
-    Height = 33
+  object lblInstructionsLeft1: TLabel
+    Left = 64
+    Top = 176
+    Width = 309
+    Height = 24
     Alignment = taCenter
     Anchors = []
-    Caption = 'Song Suggestion Service'
+    Caption = 'Please enter 3 songs that you enjoy'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 5123625
-    Font.Height = -27
+    Font.Height = -20
     Font.Name = 'Roboto Lt'
     Font.Style = []
     ParentFont = False
     Layout = tlBottom
   end
   object Label1: TLabel
-    Left = 504
+    Left = 499
     Top = 206
-    Width = 217
+    Width = 239
     Height = 24
     Alignment = taCenter
     Anchors = []
-    Caption = 'Song Suggestion Service'
+    Caption = 'previous recommendation?'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 5123625
     Font.Height = -20
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object lblInstructionsLeft2: TLabel
+    Left = 56
+    Top = 206
+    Width = 335
+    Height = 24
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'and would like your recommendations'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object lblInstructionsLeft3: TLabel
+    Left = 144
+    Top = 236
+    Width = 154
+    Height = 24
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'to be based upon:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object Label2: TLabel
+    Left = 520
+    Top = 280
+    Width = 187
+    Height = 20
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'Enter the code given from'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -17
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object Label3: TLabel
+    Left = 560
+    Top = 302
+    Width = 105
+    Height = 20
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'your prior use:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -17
     Font.Name = 'Roboto Lt'
     Font.Style = []
     ParentFont = False
@@ -158,5 +222,59 @@ object frmMainMenu: TfrmMainMenu
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+  end
+  object btnPriorUse: TButton
+    Left = 592
+    Top = 376
+    Width = 75
+    Height = 25
+    Caption = 'Search'
+    TabOrder = 4
+  end
+  object btnSongsSearch: TButton
+    Left = 160
+    Top = 446
+    Width = 129
+    Height = 35
+    Caption = 'Get Recommendations'
+    TabOrder = 5
+    OnClick = btnSongsSearchClick
+  end
+  object btnSettings: TButton
+    Left = 688
+    Top = 504
+    Width = 50
+    Height = 49
+    Caption = 'Settings'
+    TabOrder = 6
+  end
+  object RESTClient: TRESTClient
+    Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
+    AcceptCharset = 'UTF-8'
+    BaseURL = 'https://api.spotify.com/v1'
+    ContentType = 'application/json'
+    Params = <>
+    HandleRedirects = True
+    Left = 728
+    Top = 16
+  end
+  object RESTIdRequest: TRESTRequest
+    Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
+    AcceptCharset = 'UTF-8'
+    Client = RESTClient
+    Params = <
+      item
+        name = 'Song Id'
+      end>
+    Resource = 'Song'
+    Response = RESTResponse1
+    Timeout = 0
+    SynchronizedEvents = False
+    Left = 728
+    Top = 64
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 728
+    Top = 120
   end
 end
