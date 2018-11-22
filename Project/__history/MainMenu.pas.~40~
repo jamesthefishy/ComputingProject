@@ -78,7 +78,28 @@ begin
   showmessage(RESTIdRequest.Params[0].Value);//Dummy Test Stub   #
 
 
-  
+  Self.IdHTTPServer1.Active := True;
+
+  // Limpando tudo!
+  Self.OAuth2Authenticator1.ResetToDefaults;
+
+  // Credenciais do nosso aplicativo (A partir do seu cadastro de aplicativos no Spotify)
+  Self.OAuth2Authenticator1.ClientID := 'e7b2c8f2ecf04736be11b1cb493cdd9d';
+  Self.OAuth2Authenticator1.ClientSecret := '39fbedb9146e440dae30c9b8a85fad61';
+
+  // End-point de AUTORIZAÇÃO do Spotify
+  Self.OAuth2Authenticator1.AuthorizationEndpoint := 'https://accounts.spotify.com/authorize';
+
+  // Escopos que queremos ter acesso do usuário
+  // Self.OAuth2Authenticator1.Scope := 'user-read-private user-library-read';
+  Self.OAuth2Authenticator1.Scope := '';
+
+  // Página de redirecionamento com o efetivo CÓDIGO DE AUTORIZAÇÃO
+  Self.OAuth2Authenticator1.RedirectionEndpoint := 'http://www.google.com';
+
+  // Enfim: A definição da URI para gerar o CÓDIGO DE AUTORIZAÇÃO
+  ShellExecute(0, 'OPEN', PChar(Self.OAuth2Authenticator1.AuthorizationRequestURI), '', '', SW_SHOWNORMAL);
+
 
 
   {  //Second Song

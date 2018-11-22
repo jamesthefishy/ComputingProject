@@ -7,9 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   IPPeerClient, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope,
   System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.EngExt,
-  Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth,
-  IdBaseComponent, IdComponent, IdCustomTCPServer, IdCustomHTTPServer,
-  IdHTTPServer;
+  Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth;
 
 type
   TfrmMainMenu = class(TForm)
@@ -37,9 +35,9 @@ type
     LinkControlToFieldContent: TLinkControlToField;
     BindingsList1: TBindingsList;
     OAuth2Authenticator1: TOAuth2Authenticator;
+    ADOConnection1: TADOConnection;
     ADOTable1: TADOTable;
     ADOQuery1: TADOQuery;
-    IdHTTPServer1: TIdHTTPServer;
     procedure btnSongsSearchClick(Sender: TObject);
   private
     { Private declarations }
@@ -78,10 +76,7 @@ begin
   showmessage(RESTIdRequest.Params[0].Value);//Dummy Test Stub   #
 
 
-  
-
-
-  {  //Second Song
+    //Second Song
   Song2  := stringreplace(Song2, ' ', '+',[rfReplaceAll, rfIgnoreCase]);
   //Search cannot include spaces so replaces them with +
   RESTIdRequest.Params[0].Value:=Song2;    //removed search?type=track&q= to test
@@ -97,7 +92,6 @@ begin
   //Sets up the search parameters
   RESTIdRequest.Execute;//Runs the search
   showmessage(RESTIdRequest.Params[0].Value);//Dummy Test Stub
-  }
-  end;
+end;
 
 end.

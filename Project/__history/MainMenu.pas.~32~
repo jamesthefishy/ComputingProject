@@ -7,9 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   IPPeerClient, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope,
   System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.EngExt,
-  Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth,
-  IdBaseComponent, IdComponent, IdCustomTCPServer, IdCustomHTTPServer,
-  IdHTTPServer;
+  Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth;
 
 type
   TfrmMainMenu = class(TForm)
@@ -37,9 +35,9 @@ type
     LinkControlToFieldContent: TLinkControlToField;
     BindingsList1: TBindingsList;
     OAuth2Authenticator1: TOAuth2Authenticator;
+    ADOConnection1: TADOConnection;
     ADOTable1: TADOTable;
     ADOQuery1: TADOQuery;
-    IdHTTPServer1: TIdHTTPServer;
     procedure btnSongsSearchClick(Sender: TObject);
   private
     { Private declarations }
@@ -66,6 +64,29 @@ begin
   Song2:=edtSongEntry2.Text;
   Song3:=edtSongEntry3.Text;
 
+  //!!
+        // Limpando tudo!
+  Self.OAuth2Authenticator1.ResetToDefaults;
+  // Credenciais do nosso aplicativo (A partir do seu cadastro de aplicativos no Spotify)
+  Self.OAuth2Authenticator1.ClientID := 'e7b2c8f2ecf04736be11b1cb493cdd9d';
+  Self.OAuth2Authenticator1.ClientSecret := '6e76c7204a4440c28b89325d3462d5bc';
+
+  Self.OAuth2Authenticator1.AuthorizationEndpoint := 'https://accounts.spotify.com/authorize';
+
+  Self.OAuth2Authenticator1.Scope := '';
+  // Enfim: A definição da URI para gerar o CÓDIGO DE AUTORIZAÇÃO
+  ShellExecute(0, 'OPEN', PChar(Self.OAuth2Authenticator1.AuthorizationRequestURI), '', '', SW_SHOWNORMAL);
+
+    // Definição do CÓDIGO DE ACESSO, que recuperamos à partir da página de redirecionamento
+  Self.OAuth2Authenticator1.AuthCode := ARequestInfo.Params.Values['code'];
+
+  // End-point para a geração do TOKEN DE ACESSO
+  Self.OAuth2Authenticator1.AccessTokenEndpoint := 'https://accounts.spotify.com/api/token';
+
+  // Definindo o TOKEN DE ACESSO à partir do CÓDIGO DE AUTORIZAÇÃO
+  Self.OAuth2Authenticator1.ChangeAuthCodeToAccesToken;
+
+  //  !!
 
 
 
@@ -78,10 +99,7 @@ begin
   showmessage(RESTIdRequest.Params[0].Value);//Dummy Test Stub   #
 
 
-  
-
-
-  {  //Second Song
+    //Second Song
   Song2  := stringreplace(Song2, ' ', '+',[rfReplaceAll, rfIgnoreCase]);
   //Search cannot include spaces so replaces them with +
   RESTIdRequest.Params[0].Value:=Song2;    //removed search?type=track&q= to test
@@ -97,7 +115,6 @@ begin
   //Sets up the search parameters
   RESTIdRequest.Execute;//Runs the search
   showmessage(RESTIdRequest.Params[0].Value);//Dummy Test Stub
-  }
-  end;
+end;
 
 end.

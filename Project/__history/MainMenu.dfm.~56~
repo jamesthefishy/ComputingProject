@@ -254,6 +254,13 @@ object frmMainMenu: TfrmMainMenu
     Top = 487
     Width = 320
     Height = 82
+    Lines.Strings = (
+      '{'
+      '  "error": {'
+      '    "status": 401,'
+      '    "message": "Invalid access token"'
+      '  }'
+      '}')
     TabOrder = 7
   end
   object RESTClient: TRESTClient
@@ -326,10 +333,5 @@ object frmMainMenu: TfrmMainMenu
     Parameters = <>
     Left = 96
     Top = 24
-  end
-  object IdHTTPServer1: TIdHTTPServer
-    Bindings = <>
-    Left = 80
-    Top = 104
   end
 end

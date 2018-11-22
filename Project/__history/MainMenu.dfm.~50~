@@ -250,7 +250,7 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 6
   end
   object MemoContent: TMemo
-    Left = 311
+    Left = 339
     Top = 487
     Width = 320
     Height = 82
@@ -260,8 +260,8 @@ object frmMainMenu: TfrmMainMenu
     Authenticator = OAuth2Authenticator1
     Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
     AcceptCharset = 'UTF-8'
-    BaseURL = 'https://api.spotify.com/v1/search'
-    ContentType = 'json/application'
+    BaseURL = 'https://api.spotify.com'
+    ContentType = 'application/x-www-form-urlencoded'
     Params = <>
     HandleRedirects = True
     Left = 728
@@ -284,7 +284,7 @@ object frmMainMenu: TfrmMainMenu
     Top = 72
   end
   object RESTResponse1: TRESTResponse
-    ContentType = 'application/json, application/json'
+    ContentType = 'text/html'
     Left = 728
     Top = 120
   end
@@ -302,34 +302,27 @@ object frmMainMenu: TfrmMainMenu
     end
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
-    AccessToken = 
-      'BQBSkQYXwS2Qiomdt5FMpBha--OzQKC3i-wmSKhT0Ie1F2m2EK66i2MqJCSUslfZ' +
-      'vnkvo0bZ50XEaP_tSrY_EutWHKjX5OvcolwOmoP1cp8Px7HNeX1lMkkKi-mxCjNt' +
-      'bUyNs_MeCjRVkUBmwP9RZQnfqMNgGCTL'
-    AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
-    ClientID = 'd986b0d4e2640a4a4d6d0d82e25e567'
-    ClientSecret = 'e73b70f7489f40649ca2b7b7eddf0232'
-    RedirectionEndpoint = 'www.google.com'
+    ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
+    ClientSecret = '6e76c7204a4440c28b89325d3462d5bc'
     Left = 624
     Top = 104
   end
-  object ADOTable1: TADOTable
+  object ADOConnection1: TADOConnection
     ConnectionString = 
       'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
-      'ct\Project\Projectdb.accdb;Persist Security Info=False'
-    TableName = 'tblChosenSongs'
-    Left = 32
+      'ct\Project\ProjectDB.accdb;Persist Security Info=False'
+    Provider = 'Microsoft.ACE.OLEDB.16.0'
+    Left = 24
     Top = 24
+  end
+  object ADOTable1: TADOTable
+    Left = 24
+    Top = 88
   end
   object ADOQuery1: TADOQuery
     Parameters = <>
     Left = 96
     Top = 24
-  end
-  object IdHTTPServer1: TIdHTTPServer
-    Bindings = <>
-    Left = 80
-    Top = 104
   end
 end
