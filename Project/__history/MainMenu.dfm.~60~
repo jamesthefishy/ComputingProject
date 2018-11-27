@@ -233,7 +233,7 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 4
   end
   object btnSongsSearch: TButton
-    Left = 169
+    Left = 160
     Top = 446
     Width = 129
     Height = 35
@@ -257,8 +257,8 @@ object frmMainMenu: TfrmMainMenu
     Lines.Strings = (
       '{'
       '  "error": {'
-      '    "status": 404,'
-      '    "message": "Service not found"'
+      '    "status": 401,'
+      '    "message": "Invalid access token"'
       '  }'
       '}')
     TabOrder = 7
@@ -291,7 +291,7 @@ object frmMainMenu: TfrmMainMenu
     Top = 72
   end
   object RESTResponse1: TRESTResponse
-    ContentType = 'application/json'
+    ContentType = 'application/json, application/json'
     Left = 728
     Top = 120
   end
@@ -309,10 +309,6 @@ object frmMainMenu: TfrmMainMenu
     end
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
-    AccessToken = 
-      'BQB__deYuFv5OB5A7Ngb2sETmzE9qbkVS0_DBvJREt7qU4BdzQ795B9J1PMvX_Bt' +
-      'p-CV4khSDyh6O9hVCF8At36033D0FBX7WwVTyWJC7BdkOFkfFthE89Ibrj8wIXK3' +
-      'tOy47IgeL7yzeGPVvq6BPXNSORo-CH_0A0Fseg'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'

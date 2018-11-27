@@ -233,7 +233,7 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 4
   end
   object btnSongsSearch: TButton
-    Left = 169
+    Left = 160
     Top = 446
     Width = 129
     Height = 35
@@ -250,17 +250,10 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 6
   end
   object MemoContent: TMemo
-    Left = 423
+    Left = 311
     Top = 487
-    Width = 259
+    Width = 320
     Height = 82
-    Lines.Strings = (
-      '{'
-      '  "error": {'
-      '    "status": 404,'
-      '    "message": "Service not found"'
-      '  }'
-      '}')
     TabOrder = 7
   end
   object RESTClient: TRESTClient
@@ -291,7 +284,7 @@ object frmMainMenu: TfrmMainMenu
     Top = 72
   end
   object RESTResponse1: TRESTResponse
-    ContentType = 'application/json'
+    ContentType = 'application/json, application/json'
     Left = 728
     Top = 120
   end
@@ -310,17 +303,16 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQB__deYuFv5OB5A7Ngb2sETmzE9qbkVS0_DBvJREt7qU4BdzQ795B9J1PMvX_Bt' +
-      'p-CV4khSDyh6O9hVCF8At36033D0FBX7WwVTyWJC7BdkOFkfFthE89Ibrj8wIXK3' +
-      'tOy47IgeL7yzeGPVvq6BPXNSORo-CH_0A0Fseg'
+      'BQBSkQYXwS2Qiomdt5FMpBha--OzQKC3i-wmSKhT0Ie1F2m2EK66i2MqJCSUslfZ' +
+      'vnkvo0bZ50XEaP_tSrY_EutWHKjX5OvcolwOmoP1cp8Px7HNeX1lMkkKi-mxCjNt' +
+      'bUyNs_MeCjRVkUBmwP9RZQnfqMNgGCTL'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
-    ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
-    ClientSecret = '39fbedb9146e440dae30c9b8a85fad61'
+    ClientID = 'd986b0d4e2640a4a4d6d0d82e25e567'
+    ClientSecret = 'e73b70f7489f40649ca2b7b7eddf0232'
     RedirectionEndpoint = 'www.google.com'
-    ResponseType = rtTOKEN
-    Left = 648
-    Top = 16
+    Left = 624
+    Top = 104
   end
   object ADOTable1: TADOTable
     ConnectionString = 

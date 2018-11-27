@@ -65,8 +65,9 @@ begin
   Song1:=edtSongEntry1.Text;//More managable variable names
   Song2:=edtSongEntry2.Text;
   Song3:=edtSongEntry3.Text;
-//  Self.OAuth2Authenticator1.AccessToken:=
-  ShellExecute(0, 'OPEN', PChar('https://accounts.spotify.com/authorize?client_id=e7b2c8f2ecf04736be11b1cb493cdd9d&redirect_uri=http://example.com/callback/&scope=user-read-private%20user-read-email&response_type=token&state=123'), '', '', SW_SHOWNORMAL);
+  Self.OAuth2Authenticator1.AccessToken:=
+     ShellExecute(0, 'OPEN', PChar('https://accounts.spotify.com/authorize?client_id=e7b2c8f2ecf04736be11b1cb493cdd9d&redirect_uri=http://example.com/callback/&scope=user-read-private%20user-read-email&response_type=token&state=123'), '', '', SW_SHOWNORMAL);
+
 
 
   //First Song

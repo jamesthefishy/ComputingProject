@@ -310,9 +310,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQB__deYuFv5OB5A7Ngb2sETmzE9qbkVS0_DBvJREt7qU4BdzQ795B9J1PMvX_Bt' +
-      'p-CV4khSDyh6O9hVCF8At36033D0FBX7WwVTyWJC7BdkOFkfFthE89Ibrj8wIXK3' +
-      'tOy47IgeL7yzeGPVvq6BPXNSORo-CH_0A0Fseg'
+      'BQDuDbMUz6X-1NnTDT9TTG9D9Sj7gpufTAbKJN6CvAnlEv2jy4HXi86XijwFjlY7' +
+      '734VUKDPVG1Kf2DKbiQ1_G_G4wj28FTBZdbEAIocxtdGS7wnVM0N_cKP2yiuGh5D' +
+      'HYEBc7xuV4o2idmV9AVxR33WKXWvsUhpQPRDvQ'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
