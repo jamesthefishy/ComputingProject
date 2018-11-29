@@ -40,9 +40,6 @@ Coordinates=788,10,53,58
 [Label2]
 Coordinates=606,10,53,58
 
-[RESTResponse1]
-Coordinates=10,10,113,344
-
 [edtSongEntry1]
 Coordinates=404,10,99,58
 
@@ -66,4 +63,14 @@ Coordinates=142,230,91,36
 
 [OAuth2Authenticator1]
 Coordinates=540,80,141,278
+
+[ADOTable1]
+Coordinates=142,1,81,58
+
+[ADOQuery1]
+Coordinates=142,78,84,58
+
+[RESTResponseID]
+Coordinates=10,10,113,344
+Visible=True
 

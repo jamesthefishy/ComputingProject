@@ -30,7 +30,7 @@ type
     Label3: TLabel;
     RESTClient: TRESTClient;
     RESTIdRequest: TRESTRequest;
-    RESTResponseID: TRESTResponse;
+    RESTResponse1: TRESTResponse;
     btnPriorUse: TButton;
     btnSongsSearch: TButton;
     btnSettings: TButton;
@@ -44,7 +44,6 @@ type
     RESTResponseProperties: TRESTResponse;
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
 
 
   private
@@ -80,7 +79,9 @@ begin
   Song1:=edtSongEntry1.Text;//More managable variable names
   Song2:=edtSongEntry2.Text;
   Song3:=edtSongEntry3.Text;
-  
+  //Self.OAuth2Authenticator1.AccessToken:=
+  ShellExecute(0, 'OPEN', PChar('https://accounts.spotify.com/authorize?client_id=e7b2c8f2ecf04736be11b1cb493cdd9d&redirect_uri=http://localhost:9090/&scope=user-read-private%20user-read-email&response_type=token&state=123'), '', '', SW_SHOWNORMAL);
+
   //First Song
   Song1  := stringreplace(Song1, ' ', '%20',[rfReplaceAll, rfIgnoreCase]);
   //Search cannot include spaces so replaces them with +
@@ -88,10 +89,10 @@ begin
   //Sets up the search parameters
   RESTIdRequest.Execute;//Runs the search
   showmessage(RESTIdRequest.FullResource);//Dummy Test Stub
-  tracks:=RESTResponseID.JSONValue as TJSONObject;
+  tracks:=RESTResponse1.JSONValue as TJSONObject;
   items:=tracks.Values['items'] as TJSONObject;
   SongId1:=items.Values['id'].Value;
-  //showmessage(SongId1);
+  showmessage(SongId1);
 
 
   {//Second Song
@@ -116,12 +117,5 @@ begin
 
   end;
 
-
-procedure TfrmMainMenu.FormCreate(Sender: TObject);
-begin
-//Self.OAuth2Authenticator1.AccessToken:=
-ShellExecute(0, 'OPEN', PChar('https://accounts.spotify.com/authorize?client_id=e7b2c8f2ecf04736be11b1cb493cdd9d&redirect_uri=http://localhost:9090/&scope=user-read-private%20user-read-email&response_type=token&state=123'), '', '', SW_SHOWNORMAL);
-
-end;
 
 end.

@@ -13,7 +13,6 @@ object frmMainMenu: TfrmMainMenu
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
-  OnCreate = FormCreate
   DesignSize = (
     810
     610)
@@ -252,27 +251,26 @@ object frmMainMenu: TfrmMainMenu
     OnClick = btnSettingsClick
   end
   object MemoContent: TMemo
-    Left = 397
-    Top = 168
+    Left = 423
+    Top = 487
     Width = 259
-    Height = 336
+    Height = 82
     TabOrder = 7
   end
   object RESTClient: TRESTClient
     Authenticator = OAuth2Authenticator1
     Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
     AcceptCharset = 'UTF-8'
-    BaseURL = 'https://api.spotify.com/v1'
-    ContentType = 'application/json'
+    BaseURL = 'https://api.spotify.com'
+    ContentType = 'json/application'
     Params = <>
     HandleRedirects = True
-    Left = 256
+    Left = 728
     Top = 16
   end
   object RESTIdRequest: TRESTRequest
     Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
     AcceptCharset = 'UTF-8'
-    AcceptEncoding = 'True'
     Client = RESTClient
     Params = <
       item
@@ -280,16 +278,16 @@ object frmMainMenu: TfrmMainMenu
         name = 'pattern'
       end>
     Resource = 'v1/search?q='
-    Response = RESTResponseID
+    Response = RESTResponse1
     Timeout = 0
     SynchronizedEvents = False
-    Left = 312
-    Top = 16
+    Left = 728
+    Top = 72
   end
-  object RESTResponseID: TRESTResponse
+  object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 376
-    Top = 16
+    Left = 728
+    Top = 120
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -298,7 +296,7 @@ object frmMainMenu: TfrmMainMenu
     Top = 557
     object LinkControlToFieldContent: TLinkControlToField
       Category = 'Quick Bindings'
-      DataSource = RESTResponseID
+      DataSource = RESTResponse1
       FieldName = 'Content'
       Control = MemoContent
       Track = False
@@ -306,16 +304,16 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQBIfy2ge603Aace0WJk3wVhN5fEcYXCZSc5WDTMUBqpjXFLn6Dhu32PkEkgRmNv' +
-      'moBq-OzfhrOHUhAi6PffG9pADToyIqXmjC22pgLvrwxYHl4flcIR-SPOD2o__HE-' +
-      'VR025XhtalwQUidYCj0uFbuONfvyVZNSFzxR0w'
+      'BQDMpBMpzO_vC4bYBdetzhgW_NLxzAFSaacfBxyJNleFn7-k4G65iVww-UwxHkW-' +
+      'qBA5hdQVoF1opNLx_4KbX0--hJS72KRJwNrXbZpsv7btKx1S3C9eDE6Hypup2y8l' +
+      'EEDfd3KdALAV51zqTxMMSZVMNjBpDGMk9LDkPA'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
     ClientSecret = '39fbedb9146e440dae30c9b8a85fad61'
     RedirectionEndpoint = 'www.google.com'
     ResponseType = rtTOKEN
-    Left = 208
+    Left = 648
     Top = 16
   end
   object ADOTable1: TADOTable
@@ -331,16 +329,21 @@ object frmMainMenu: TfrmMainMenu
     Left = 96
     Top = 24
   end
-  object RESTPropertiesRequest: TRESTRequest
-    Client = RESTClient
-    Params = <>
-    Response = RESTResponseID
-    SynchronizedEvents = False
-    Left = 712
-    Top = 56
-  end
-  object RESTResponseProperties: TRESTResponse
-    Left = 712
-    Top = 104
+  object IdHTTP1: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.ContentRangeEnd = -1
+    Request.ContentRangeStart = -1
+    Request.ContentRangeInstanceLength = -1
+    Request.Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    Request.Ranges.Units = 'bytes'
+    Request.Ranges = <>
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 272
+    Top = 16
   end
 end

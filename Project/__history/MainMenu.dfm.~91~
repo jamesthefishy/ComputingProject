@@ -263,7 +263,6 @@ object frmMainMenu: TfrmMainMenu
     Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
     AcceptCharset = 'UTF-8'
     BaseURL = 'https://api.spotify.com/v1'
-    ContentType = 'application/json'
     Params = <>
     HandleRedirects = True
     Left = 256
@@ -280,14 +279,13 @@ object frmMainMenu: TfrmMainMenu
         name = 'pattern'
       end>
     Resource = 'v1/search?q='
-    Response = RESTResponseID
+    Response = RESTResponse1
     Timeout = 0
     SynchronizedEvents = False
     Left = 312
     Top = 16
   end
-  object RESTResponseID: TRESTResponse
-    ContentType = 'application/json'
+  object RESTResponse1: TRESTResponse
     Left = 376
     Top = 16
   end
@@ -298,7 +296,7 @@ object frmMainMenu: TfrmMainMenu
     Top = 557
     object LinkControlToFieldContent: TLinkControlToField
       Category = 'Quick Bindings'
-      DataSource = RESTResponseID
+      DataSource = RESTResponse1
       FieldName = 'Content'
       Control = MemoContent
       Track = False
@@ -334,7 +332,7 @@ object frmMainMenu: TfrmMainMenu
   object RESTPropertiesRequest: TRESTRequest
     Client = RESTClient
     Params = <>
-    Response = RESTResponseID
+    Response = RESTResponse1
     SynchronizedEvents = False
     Left = 712
     Top = 56

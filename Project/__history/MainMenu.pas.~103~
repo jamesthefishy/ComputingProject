@@ -90,7 +90,7 @@ begin
   showmessage(RESTIdRequest.FullResource);//Dummy Test Stub
   tracks:=RESTResponseID.JSONValue as TJSONObject;
   items:=tracks.Values['items'] as TJSONObject;
-  SongId1:=items.Values['id'].Value;
+  SongId1:=items.Values['id'];
   //showmessage(SongId1);
 
 

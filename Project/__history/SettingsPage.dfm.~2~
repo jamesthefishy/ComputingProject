@@ -41,6 +41,5 @@ object frmSettings: TfrmSettings
     Caption = 'Back'
     Style = bsCommandLink
     TabOrder = 0
-    OnClick = btnBackToMenuClick
   end
 end

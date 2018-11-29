@@ -91,7 +91,7 @@ begin
   tracks:=RESTResponseID.JSONValue as TJSONObject;
   items:=tracks.Values['items'] as TJSONObject;
   SongId1:=items.Values['id'].Value;
-  //showmessage(SongId1);
+  showmessage(SongId1);
 
 
   {//Second Song
