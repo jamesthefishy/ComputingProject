@@ -346,13 +346,4 @@ object frmMainMenu: TfrmMainMenu
     Left = 152
     Top = 72
   end
-  object tblChosenSongs: TADOTable
-    ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
-      'ct\Project\Projectdb.accdb;Persist Security Info=False'
-    CursorType = ctStatic
-    TableName = 'tblChosenSongs'
-    Left = 144
-    Top = 8
-  end
 end

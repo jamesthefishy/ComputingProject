@@ -92,12 +92,11 @@ begin
   SongID3 := '';
 
   // First Song
-  //Song1 := stringreplace(Song1, ' ', '%20', [rfReplaceAll, rfIgnoreCase]);
+  Song1 := stringreplace(Song1, ' ', '%20', [rfReplaceAll, rfIgnoreCase]);
   // Search cannot include spaces so replaces them with +
   RESTIdRequest.Resource := '//search?q=' + Song1 + '&type=track&limit=1';
   // Sets up the search parameters
   RESTIdRequest.Execute; // Runs the search
-  showmessage('');
   // The song ID is always followed by "is_local"
   // http://www.delphibasics.co.uk/RTL.asp?Name=ansipos
   position := ansipos('is_local', RESTResponse.Content);

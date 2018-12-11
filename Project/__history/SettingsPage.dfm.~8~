@@ -12,7 +12,8 @@ object frmSettings: TfrmSettings
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnShow = OnShow
+  OnCreate = FormCreate
+  OnShow = FormCreate
   DesignSize = (
     810
     610)

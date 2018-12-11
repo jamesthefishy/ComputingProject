@@ -46,7 +46,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object shpEntryBackhroundRight: TShape
     Left = 448
-    Top = 176
+    Top = 168
     Width = 337
     Height = 281
     Brush.Color = 14471111
@@ -260,8 +260,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object RESTClient: TRESTClient
     Authenticator = OAuth2Authenticator1
-    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
-    AcceptCharset = 'UTF-8, *;q=0.8'
+    Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
+    AcceptCharset = 'UTF-8'
+    AcceptEncoding = 'True'
     BaseURL = 'https://api.spotify.com/v1'
     ContentType = 'application/json'
     Params = <>
@@ -280,13 +281,13 @@ object frmMainMenu: TfrmMainMenu
         name = 'pattern'
       end>
     Resource = 'v1/search?q='
-    Response = RESTResponse
+    Response = RESTResponseID
     Timeout = 0
     SynchronizedEvents = False
     Left = 312
     Top = 16
   end
-  object RESTResponse: TRESTResponse
+  object RESTResponseID: TRESTResponse
     ContentType = 'application/json'
     Left = 376
     Top = 16
@@ -298,7 +299,7 @@ object frmMainMenu: TfrmMainMenu
     Top = 557
     object LinkControlToFieldContent: TLinkControlToField
       Category = 'Quick Bindings'
-      DataSource = RESTResponse
+      DataSource = RESTResponseID
       FieldName = 'Content'
       Control = MemoContent
       Track = False
@@ -306,9 +307,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQA96-zYmM4SeJXEokcOZG79ISnRYQasGIQFRkxMWocM03etCGPRLIO9VkUTyF1u' +
-      'RCj_pSf1lKyODO6ugK2xpQWUWrOTQzt7SnobNthI-qaMsEHIcxfyBvbjwgQgwJmy' +
-      'AkDh18lXzL3i-LFcKcmxlgr1NVXqfk6xUYsq5Q'
+      'BQAU7UTA12atQM30AF2xS4Kea8UHkeAz_suUkB-93w9_DLwY1LGblKX95YVxw23b' +
+      '4QtZmqUphbyF0_h5Ufuy75nZdjq7HY5Nq49NNT0Gb18w5WQHjpiPZJVAXg8zNqE1' +
+      '-942oKWSKnNIM2BtryvxstHCKR5B3Y4yzBhrCQ'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
@@ -318,41 +319,35 @@ object frmMainMenu: TfrmMainMenu
     Left = 64
     Top = 72
   end
-  object tblSongProperties: TADOTable
-    Active = True
+  object ADOTable1: TADOTable
     ConnectionString = 
       'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
       'ct\Project\Projectdb.accdb;Persist Security Info=False'
-    CursorType = ctStatic
-    TableName = 'tblSongProperties'
-    Left = 56
-    Top = 8
+    TableName = 'tblChosenSongs'
+    Left = 32
+    Top = 24
   end
   object ADOQuery1: TADOQuery
     Parameters = <>
-    Left = 752
-    Top = 16
+    Left = 96
+    Top = 24
   end
   object RESTPropertiesRequest: TRESTRequest
     Client = RESTClient
     Params = <>
-    Response = RESTResponse
+    Response = RESTResponseID
     SynchronizedEvents = False
-    Left = 456
-    Top = 16
+    Left = 712
+    Top = 56
+  end
+  object RESTResponseProperties: TRESTResponse
+    ContentType = 'application/json'
+    Left = 712
+    Top = 104
   end
   object DataSource1: TDataSource
-    DataSet = tblSongProperties
-    Left = 152
-    Top = 72
-  end
-  object tblChosenSongs: TADOTable
-    ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
-      'ct\Project\Projectdb.accdb;Persist Security Info=False'
-    CursorType = ctStatic
-    TableName = 'tblChosenSongs'
-    Left = 144
-    Top = 8
+    DataSet = ADOTable1
+    Left = 128
+    Top = 560
   end
 end

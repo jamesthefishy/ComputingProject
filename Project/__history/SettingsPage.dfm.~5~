@@ -12,7 +12,7 @@ object frmSettings: TfrmSettings
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnShow = OnShow
+  OnCreate = FormCreate
   DesignSize = (
     810
     610)
@@ -35,13 +35,13 @@ object frmSettings: TfrmSettings
     Layout = tlBottom
   end
   object lblAccessCodeInstruct: TLabel
-    Left = 205
-    Top = 120
-    Width = 414
+    Left = 144
+    Top = 144
+    Width = 410
     Height = 13
     Caption = 
       'From the webpage that is loaded when this was opened copy the co' +
-      'de as seen below:'
+      'de as seen below'
   end
   object btnBackToMenu: TButton
     Left = 627
@@ -53,21 +53,12 @@ object frmSettings: TfrmSettings
     TabOrder = 0
     OnClick = btnBackToMenuClick
   end
-  object edtAccessCodeEntry: TEdit
-    Left = 209
-    Top = 192
-    Width = 410
+  object Edit1: TEdit
+    Left = 152
+    Top = 216
+    Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'edtAccessCodeEntry'
-  end
-  object btnAccessCodeSubmit: TButton
-    Left = 368
-    Top = 232
-    Width = 75
-    Height = 25
-    Caption = 'Submit'
-    TabOrder = 2
-    OnClick = btnAccessCodeSubmitClick
+    Text = 'Edit1'
   end
 end

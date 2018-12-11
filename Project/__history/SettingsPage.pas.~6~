@@ -10,12 +10,10 @@ type
   TfrmSettings = class(TForm)
     lblTitle: TLabel;
     btnBackToMenu: TButton;
-    edtAccessCodeEntry: TEdit;
+    Edit1: TEdit;
     lblAccessCodeInstruct: TLabel;
-    btnAccessCodeSubmit: TButton;
     procedure btnBackToMenuClick(Sender: TObject);
-    procedure OnShow(Sender: TObject);
-    procedure btnAccessCodeSubmitClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,18 +29,13 @@ uses
  MainMenu,Winapi.ShellApi;
 {$R *.dfm}
 
-procedure TfrmSettings.btnAccessCodeSubmitClick(Sender: TObject);
-begin
-FrmMainMenu.OAuth2Authenticator1.AccessToken:= edtAccessCodeEntry.Text;
-end;
-
 procedure TfrmSettings.btnBackToMenuClick(Sender: TObject);
 begin
 frmSettings.hide;
 frmMainMenu.Show;
 end;
 
-procedure TfrmSettings.OnShow(Sender: TObject);
+procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
 //Self.OAuth2Authenticator1.AccessToken:=
 ShellExecute(0, 'OPEN', PChar('https://accounts.spotify.com/authorize?client_id=e7b2c8f2ecf04736be11b1cb493cdd9d&redirect_uri=http://localhost:9090/&scope=user-read-private%20user-read-email&response_type=token&state=123'), '', '', SW_SHOWNORMAL);

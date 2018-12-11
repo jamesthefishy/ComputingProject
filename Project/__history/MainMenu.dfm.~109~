@@ -256,6 +256,13 @@ object frmMainMenu: TfrmMainMenu
     Top = 472
     Width = 259
     Height = 105
+    Lines.Strings = (
+      '{'
+      '  "error": {'
+      '    "status": 400,'
+      '    "message": "Bad uri"'
+      '  }'
+      '}')
     TabOrder = 7
   end
   object RESTClient: TRESTClient
@@ -306,9 +313,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQA96-zYmM4SeJXEokcOZG79ISnRYQasGIQFRkxMWocM03etCGPRLIO9VkUTyF1u' +
-      'RCj_pSf1lKyODO6ugK2xpQWUWrOTQzt7SnobNthI-qaMsEHIcxfyBvbjwgQgwJmy' +
-      'AkDh18lXzL3i-LFcKcmxlgr1NVXqfk6xUYsq5Q'
+      'BQAmDmvzQ1jM2LGwxqn8wlD8KoY0sQr_aMtBlHgypZWf2o4Wo2VMDpphpi8MlMCo' +
+      'YVqa6rGe2s-a8xV388vglEEab1tOI93pCCi0dzVvHdlY31OU2CwhoqPCPtlOJtI0' +
+      'fx6HT6fg1Y7fiHHx_zYbGe-7TLYFLgc2zGLaKw'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
@@ -319,11 +326,9 @@ object frmMainMenu: TfrmMainMenu
     Top = 72
   end
   object tblSongProperties: TADOTable
-    Active = True
     ConnectionString = 
       'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
       'ct\Project\Projectdb.accdb;Persist Security Info=False'
-    CursorType = ctStatic
     TableName = 'tblSongProperties'
     Left = 56
     Top = 8
@@ -345,14 +350,5 @@ object frmMainMenu: TfrmMainMenu
     DataSet = tblSongProperties
     Left = 152
     Top = 72
-  end
-  object tblChosenSongs: TADOTable
-    ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
-      'ct\Project\Projectdb.accdb;Persist Security Info=False'
-    CursorType = ctStatic
-    TableName = 'tblChosenSongs'
-    Left = 144
-    Top = 8
   end
 end

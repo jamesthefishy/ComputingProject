@@ -2,7 +2,7 @@
 Coordinates=287,432,164,36
 
 [RESTIdRequest]
-Coordinates=360,120,107,124
+Coordinates=370,80,107,124
 
 [btnSettings]
 Coordinates=143,364,79,58
@@ -64,13 +64,22 @@ Coordinates=142,230,91,36
 [OAuth2Authenticator1]
 Coordinates=540,80,141,278
 
-[ADOTable1]
-Coordinates=142,1,81,58
-
 [ADOQuery1]
 Coordinates=142,78,84,58
 
-[RESTResponseID]
-Coordinates=10,10,113,344
+[RESTPropertiesRequest]
+Coordinates=10,160,155,102
+
+[DataSource1]
+Coordinates=377,263,89,36
+
+[]
+Coordinates=170,160,165,344
+
+[RESTResponse]
+Coordinates=690,80,119,344
 Visible=True
+
+[tblSongProperties]
+Coordinates=142,1,81,58
 
