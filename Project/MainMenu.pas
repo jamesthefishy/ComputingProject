@@ -11,7 +11,7 @@ uses
   Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth,
   IdBaseComponent, IdComponent, IdCustomTCPServer, IdCustomHTTPServer,
   IdHTTPServer, IdContext, Soap.InvokeRegistry, Soap.Rio, Soap.SOAPHTTPClient,
-  IdHTTP, IdTCPConnection, IdTCPClient, System.JSON;
+  IdHTTP, IdTCPConnection, IdTCPClient, System.JSON, REST.Types;
 
 type
   TfrmMainMenu = class(TForm)
@@ -123,12 +123,7 @@ begin
   tblChosenSongs.Insert;
   tblSongProperties.FieldByName('ID').AsString := SongId1;
   tblSongProperties.FieldByName('Song Name').AsString:=Song1;
-  tblChosenSongs.FieldByName('Song1ID').AsString:=SongId1;
-  try
-    tblChosenSongs.Post
-  except
-    showmessage('Error writing to chosen songs table');
-  end;
+
   for i := 0 to 5 do
   begin
     dbsendtemp := '';
@@ -187,17 +182,10 @@ begin
   tblSongProperties.Open;
   tblSongProperties.Edit;
   tblSongProperties.Insert;
-  tblChosenSongs.Open;
-  tblChosenSongs.Edit;
-  tblChosenSongs.Insert;
+
   tblSongProperties.FieldByName('ID').AsString := SongId2;
   tblSongProperties.FieldByName('Song Name').AsString:=Song2;
-  tblChosenSongs.FieldByName('Song2ID').AsString:=SongId2;
-  try
-    tblChosenSongs.Post
-  except
-    showmessage('Error writing to chosen songs table');
-  end;
+
   for i := 0 to 5 do
   begin
     dbsendtemp := '';
@@ -258,17 +246,10 @@ begin
   tblSongProperties.Open;
   tblSongProperties.Edit;
   tblSongProperties.Insert;
-  tblChosenSongs.Open;
-  tblChosenSongs.Edit;
-  tblChosenSongs.Insert;
+
   tblSongProperties.FieldByName('ID').AsString := SongId3;
   tblSongProperties.FieldByName('Song Name').AsString:=Song3;
-  tblChosenSongs.FieldByName('Song3ID').AsString:=SongId3;
-  try
-    tblChosenSongs.Post
-  except
-    showmessage('Error writing to chosen songs table');
-  end;
+
   for i := 0 to 5 do
   begin
     dbsendtemp := '';
@@ -297,13 +278,28 @@ begin
     //Applies the ID but no other properties,
   end;
 
+  tblChosenSongs.FieldByName('Song1ID').AsString:=SongId1;
+  tblChosenSongs.FieldByName('Song2ID').AsString:=SongId2;
+  tblChosenSongs.FieldByName('Song3ID').AsString:=SongId3;
+
+  try
+    tblChosenSongs.Post;
+  except
+    Showmessage('Error with the chosen songs table');
+  end;
   //showmessage(response);
 end;
 
 procedure TfrmMainMenu.FormCreate(Sender: TObject);
 begin
-  frmSettings.Show;
-  frmMainMenu.Hide;
+  tblChosenSongs.ConnectionString:='Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Desktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Security Info=False';
+  tblSongProperties.ConnectionString:='Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Desktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Security Info=False';
+
+
+//Connection string at home vs at school
+{  tblChosenSongs.ConnectionString:='Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+  tblSongProperties.ConnectionString:='Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+ }
 end;
 
 end.

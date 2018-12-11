@@ -22,8 +22,8 @@ object frmMainMenu: TfrmMainMenu
   object lblTitle: TLabel
     Left = 205
     Top = 49
-    Width = 437
-    Height = 48
+    Width = 440
+    Height = 45
     Alignment = taCenter
     Anchors = []
     Caption = 'Song Suggestion Service'
@@ -56,8 +56,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsRight1: TLabel
     Left = 504
     Top = 176
-    Width = 219
-    Height = 24
+    Width = 220
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'Would you like to recall a'
@@ -72,8 +72,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft1: TLabel
     Left = 64
     Top = 176
-    Width = 309
-    Height = 24
+    Width = 314
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'Please enter 3 songs that you enjoy'
@@ -88,8 +88,8 @@ object frmMainMenu: TfrmMainMenu
   object Label1: TLabel
     Left = 499
     Top = 206
-    Width = 239
-    Height = 24
+    Width = 235
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'previous recommendation?'
@@ -104,8 +104,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft2: TLabel
     Left = 56
     Top = 206
-    Width = 335
-    Height = 24
+    Width = 329
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'and would like your recommendations'
@@ -120,8 +120,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft3: TLabel
     Left = 144
     Top = 236
-    Width = 154
-    Height = 24
+    Width = 159
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'to be based upon:'
@@ -136,8 +136,8 @@ object frmMainMenu: TfrmMainMenu
   object Label2: TLabel
     Left = 528
     Top = 256
-    Width = 187
-    Height = 20
+    Width = 188
+    Height = 19
     Alignment = taCenter
     Anchors = []
     Caption = 'Enter the code given from'
@@ -152,8 +152,8 @@ object frmMainMenu: TfrmMainMenu
   object Label3: TLabel
     Left = 568
     Top = 282
-    Width = 105
-    Height = 20
+    Width = 108
+    Height = 19
     Alignment = taCenter
     Anchors = []
     Caption = 'your prior use:'
@@ -265,9 +265,8 @@ object frmMainMenu: TfrmMainMenu
     BaseURL = 'https://api.spotify.com/v1'
     ContentType = 'application/json'
     Params = <>
-    HandleRedirects = True
-    Left = 256
-    Top = 16
+    Left = 264
+    Top = 8
   end
   object RESTIdRequest: TRESTRequest
     Accept = 'application/json;q=0.9,text/plain;q=0.9,text/html'
@@ -277,19 +276,19 @@ object frmMainMenu: TfrmMainMenu
     Params = <
       item
         Kind = pkURLSEGMENT
-        name = 'pattern'
+        Name = 'pattern'
       end>
     Resource = 'v1/search?q='
     Response = RESTResponse
     Timeout = 0
     SynchronizedEvents = False
-    Left = 312
-    Top = 16
+    Left = 320
+    Top = 8
   end
   object RESTResponse: TRESTResponse
     ContentType = 'application/json'
     Left = 376
-    Top = 16
+    Top = 8
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -306,9 +305,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQA96-zYmM4SeJXEokcOZG79ISnRYQasGIQFRkxMWocM03etCGPRLIO9VkUTyF1u' +
-      'RCj_pSf1lKyODO6ugK2xpQWUWrOTQzt7SnobNthI-qaMsEHIcxfyBvbjwgQgwJmy' +
-      'AkDh18lXzL3i-LFcKcmxlgr1NVXqfk6xUYsq5Q'
+      'BQAfmDNGKicLwjtazhy5TIEKehMYN49Kvse2tS58CiEMub9pQyG_jbiymtuZC7DV' +
+      'MaMPQ1hiYfdNMwQgrC_x5QmI24eB9gwFQETFcomOW2MK5UgWpPy_uRY2BDWViWIr' +
+      '3dz3-qDAaVkurV5AoLqaVuv5gpvY_-O4KqDnvw'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
@@ -319,10 +318,10 @@ object frmMainMenu: TfrmMainMenu
     Top = 72
   end
   object tblSongProperties: TADOTable
-    Active = True
     ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
-      'ct\Project\Projectdb.accdb;Persist Security Info=False'
+      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Des' +
+      'ktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Secu' +
+      'rity Info=False'
     CursorType = ctStatic
     TableName = 'tblSongProperties'
     Left = 56
@@ -338,8 +337,8 @@ object frmMainMenu: TfrmMainMenu
     Params = <>
     Response = RESTResponse
     SynchronizedEvents = False
-    Left = 456
-    Top = 16
+    Left = 440
+    Top = 8
   end
   object DataSource1: TDataSource
     DataSet = tblSongProperties
@@ -348,8 +347,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object tblChosenSongs: TADOTable
     ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Proje' +
-      'ct\Project\Projectdb.accdb;Persist Security Info=False'
+      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Des' +
+      'ktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Secu' +
+      'rity Info=False'
     CursorType = ctStatic
     TableName = 'tblChosenSongs'
     Left = 144
