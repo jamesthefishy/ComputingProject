@@ -22,8 +22,8 @@ object frmMainMenu: TfrmMainMenu
   object lblTitle: TLabel
     Left = 205
     Top = 49
-    Width = 440
-    Height = 45
+    Width = 437
+    Height = 48
     Alignment = taCenter
     Anchors = []
     Caption = 'Song Suggestion Service'
@@ -56,8 +56,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsRight1: TLabel
     Left = 504
     Top = 176
-    Width = 220
-    Height = 23
+    Width = 219
+    Height = 24
     Alignment = taCenter
     Anchors = []
     Caption = 'Would you like to recall a'
@@ -72,8 +72,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft1: TLabel
     Left = 64
     Top = 176
-    Width = 314
-    Height = 23
+    Width = 309
+    Height = 24
     Alignment = taCenter
     Anchors = []
     Caption = 'Please enter 3 songs that you enjoy'
@@ -88,8 +88,8 @@ object frmMainMenu: TfrmMainMenu
   object Label1: TLabel
     Left = 499
     Top = 206
-    Width = 235
-    Height = 23
+    Width = 239
+    Height = 24
     Alignment = taCenter
     Anchors = []
     Caption = 'previous recommendation?'
@@ -104,8 +104,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft2: TLabel
     Left = 56
     Top = 206
-    Width = 329
-    Height = 23
+    Width = 335
+    Height = 24
     Alignment = taCenter
     Anchors = []
     Caption = 'and would like your recommendations'
@@ -120,8 +120,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft3: TLabel
     Left = 144
     Top = 236
-    Width = 159
-    Height = 23
+    Width = 154
+    Height = 24
     Alignment = taCenter
     Anchors = []
     Caption = 'to be based upon:'
@@ -136,8 +136,8 @@ object frmMainMenu: TfrmMainMenu
   object Label2: TLabel
     Left = 528
     Top = 256
-    Width = 188
-    Height = 19
+    Width = 187
+    Height = 20
     Alignment = taCenter
     Anchors = []
     Caption = 'Enter the code given from'
@@ -152,8 +152,8 @@ object frmMainMenu: TfrmMainMenu
   object Label3: TLabel
     Left = 568
     Top = 282
-    Width = 108
-    Height = 19
+    Width = 105
+    Height = 20
     Alignment = taCenter
     Anchors = []
     Caption = 'your prior use:'
@@ -265,6 +265,7 @@ object frmMainMenu: TfrmMainMenu
     BaseURL = 'https://api.spotify.com/v1'
     ContentType = 'application/json'
     Params = <>
+    HandleRedirects = True
     Left = 264
     Top = 8
   end
@@ -276,7 +277,7 @@ object frmMainMenu: TfrmMainMenu
     Params = <
       item
         Kind = pkURLSEGMENT
-        Name = 'pattern'
+        name = 'pattern'
       end>
     Resource = 'v1/search?q='
     Response = RESTResponse
@@ -305,9 +306,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQAfmDNGKicLwjtazhy5TIEKehMYN49Kvse2tS58CiEMub9pQyG_jbiymtuZC7DV' +
-      'MaMPQ1hiYfdNMwQgrC_x5QmI24eB9gwFQETFcomOW2MK5UgWpPy_uRY2BDWViWIr' +
-      '3dz3-qDAaVkurV5AoLqaVuv5gpvY_-O4KqDnvw'
+      'BQA8BgP-7oQP6yjJBYJdaSAfg2GH5gDUeSX2ODjCqyqoPXjPFKdEWh3uK8ZZThlk' +
+      'dt0kJqsPaTyNpYmu_uqV_y-YXZCI9Pm9tm6UNXSY7vumu59I7mmgZ6oqxhRJUcWw' +
+      'HruBo1_J8gyzO1a-g_hefs77vRcBuhpLi7CoFg'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
@@ -348,8 +349,8 @@ object frmMainMenu: TfrmMainMenu
   object tblChosenSongs: TADOTable
     ConnectionString = 
       'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Des' +
-      'ktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Secu' +
-      'rity Info=False'
+      'ktop\ComputingProject-master\Project\ProjectDB.accdb;Persist Sec' +
+      'urity Info=False'
     CursorType = ctStatic
     TableName = 'tblChosenSongs'
     Left = 144

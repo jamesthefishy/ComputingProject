@@ -3,7 +3,8 @@ program ComputingProject;
 uses
   Vcl.Forms,
   MainMenu in 'MainMenu.pas' {frmMainMenu},
-  SettingsPage in 'SettingsPage.pas' {frmSettings};
+  SettingsPage in 'SettingsPage.pas' {frmSettings},
+  neuralnetwork in 'neuralnetwork.pas';
 
 {$R *.res}
 
