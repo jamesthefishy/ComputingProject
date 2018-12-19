@@ -35,6 +35,7 @@ begin
   begin
     inputlayer[i] := frmMainmenu.tblSongProperties.FieldByName
       (dbfields[i]).AsFloat;
+    showmessage(floattostr(inputlayer[i]));
   end;
 
   for i := 0 to 48 do // Initialise bias mask 1 with random function
@@ -70,18 +71,8 @@ for j := 0 to 6 do
     begin
     hiddenlayer1[j]:=hiddenlayer1[j]+(inputlayer[k]*biasmask1[7*j]);
     end;
-//  showmessage(floattostr(hiddenlayer1[j]));
+  showmessage(floattostr(hiddenlayer1[j]));
   end;
-
-for j := 0 to 2 do
-  begin
-    for k := 0 to 6 do
-    begin
-    hiddenlayer2[j]:=hiddenlayer2[j]+(hiddenlayer1[k]*biasmask1[7*j]);
-    end;
-//  showmessage(floattostr(hiddenlayer1[j]));
-  end;
-
 
 
 

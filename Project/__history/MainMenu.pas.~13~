@@ -119,6 +119,17 @@ begin
   // showmessage(SongId1);
   RESTPropertiesRequest.Resource := 'audio-features/' + SongId1;
 
+   //Testing for neural network unit///////////////////////////
+
+  frmMainmenu.tblSongProperties.Active:=False;//Refresh Table to make sure it has up to date data
+  frmMainmenu.tblSongProperties.Active:=True;
+  frmMainMenu.tblSongProperties.Locate('ID', SongId1, []);
+  showmessage(floattostr(frmMAinmenu.tblSongProperties.FieldByName(dbfields[i]).AsFloat));
+
+ ////////////////////////////
+
+
+
   // Requests the audio features of the song.
   RESTPropertiesRequest.Execute;
   // End of Requests for song 1
@@ -182,16 +193,7 @@ begin
 
 
 
- //Testing for neural network unit///////////////////////////
-  tblSongProperties.Active:=False;//Refresh Table to make sure it has up to date data
-  tblSongProperties.Active:=True;
-  tblSongProperties.Locate('ID', SongId1, []); //Addresses only the correct song ID
-  showmessage(frmMAinmenu.tblSongProperties.GetFieldData('Danceability'));
 
-
-
-
- ////////////////////////////
 
 
 

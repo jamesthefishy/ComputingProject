@@ -37,7 +37,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object shpEntryBackGroundLeft: TShape
     Left = 24
-    Top = 136
+    Top = 128
     Width = 393
     Height = 441
     Brush.Color = 14471111
@@ -306,9 +306,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQB1zwGYjvXOy6zir1SWL3jIC-M_6LWm15_LcwbWf7Ux2O9vZxIyCWsmrJZFEume' +
-      '4Ow-0LK_gwjOAESBg9e2r51HPdZ76AaWXeSutcdzJIGwSW_yv5g7V7IMxGHHMi-H' +
-      '71x_LLJv0LKNEQqSJpQs7yeeZYBc1ioVo5h5cA'
+      'BQA8BgP-7oQP6yjJBYJdaSAfg2GH5gDUeSX2ODjCqyqoPXjPFKdEWh3uK8ZZThlk' +
+      'dt0kJqsPaTyNpYmu_uqV_y-YXZCI9Pm9tm6UNXSY7vumu59I7mmgZ6oqxhRJUcWw' +
+      'HruBo1_J8gyzO1a-g_hefs77vRcBuhpLi7CoFg'
     AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'

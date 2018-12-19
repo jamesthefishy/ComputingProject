@@ -44,6 +44,7 @@ type
     RESTPropertiesRequest: TRESTRequest;
     DataSource1: TDataSource;
     tblChosenSongs: TADOTable;
+
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -77,7 +78,8 @@ var
   position, j: Integer;
   dbsendtempreal: real;
   flag: boolean;
-  Song2, SongId1, SongID2, SongID3, Song1, Song3, response, dbsendtemp: string;
+  Song2, Song1, Song3, response, dbsendtemp: string;
+  SongId1, SongID2, SongID3: string;
   test: char;
   properties, dbfields: array of string;
 begin
@@ -162,6 +164,7 @@ begin
       try
         tblSongProperties.Post;
         showmessage('song 1 success');
+
       except
         showmessage('Error Writing to the song properties table');
 
@@ -171,8 +174,18 @@ begin
       showmessage('There is a problem with one of your search terms');
 
   end;
+  neuralnetwork.train(SongId1);
   tblSongProperties.Close;
   flag := False;
+
+
+
+
+
+
+
+
+
 
   // SECOND Song
 
@@ -321,9 +334,6 @@ begin
     end
     else
       showmessage('There is a problem with one of your search terms');
-
-
-
 
     tblSongProperties.Close;
   end;

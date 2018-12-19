@@ -183,13 +183,11 @@ begin
 
 
  //Testing for neural network unit///////////////////////////
-  tblSongProperties.Active:=False;//Refresh Table to make sure it has up to date data
-  tblSongProperties.Active:=True;
-  tblSongProperties.Locate('ID', SongId1, []); //Addresses only the correct song ID
-  showmessage(frmMAinmenu.tblSongProperties.GetFieldData('Danceability'));
 
-
-
+  frmMainmenu.tblSongProperties.Active:=False;//Refresh Table to make sure it has up to date data
+  frmMainmenu.tblSongProperties.Active:=True;
+  frmMainMenu.tblSongProperties.Locate('ID', SongId1, []);
+  showmessage(floattostr(frmMAinmenu.tblSongProperties.FieldByName(dbfields[i]).AsFloat));
 
  ////////////////////////////
 

@@ -37,7 +37,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object shpEntryBackGroundLeft: TShape
     Left = 24
-    Top = 136
+    Top = 128
     Width = 393
     Height = 441
     Brush.Color = 14471111

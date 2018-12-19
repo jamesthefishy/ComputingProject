@@ -13,11 +13,11 @@ uses Mainmenu, Winapi.Windows, Winapi.Messages, System.SysUtils,
 procedure train(songID: string);
 var
   i, j, k, l, m: integer;
-  inputlayer, hiddenlayer1: array [0 .. 6] of real;
-  biasmask1: array [0 .. 48] of real;
-  hiddenlayer2: array [0 .. 2] of real;
-  biasmask2: array [0 .. 20] of real;
-  biasmask3: array [0 .. 2] of real;
+  inputlayer, hiddenlayer: array [1 .. 7] of real;
+  biasmask1: array [1 .. 49] of real;
+  hiddenlayer2: array [1 .. 3] of real;
+  biasmask2: array [1 .. 21] of real;
+  biasmask3: array [1 .. 3] of real;
   outputvalue: real;
   dbfields: array of string;
 begin
@@ -28,23 +28,22 @@ begin
   // Refresh Table to make sure it has up to date data
   frmMainmenu.tblSongProperties.Active := True;
   frmMainmenu.tblSongProperties.Locate('ID', songID, []);
-
- //Initialisation
   // Addresses only the correct song ID
-  for i := 0 to 6 do // Initialise the input layer with values from DB
+  for i := 1 to 7 do // Initialise the input layer with values from DB
   begin
     inputlayer[i] := frmMainmenu.tblSongProperties.FieldByName
       (dbfields[i]).AsFloat;
+    showmessage(floattostr(inputlayer[i]));
   end;
 
-  for i := 0 to 48 do // Initialise bias mask 1 with random function
+  for i := 1 to 49 do // Initialise bias mask 1 with random function
   begin
     biasmask1[i] := (randomrange(-100000, 100000) / 100000);
     // Generates a random number
     // between -1 and 1
   end;
 
-  for i := 0 to 20 do // Initialise bias mask 2 with random function
+  for i := 1 to 21 do // Initialise bias mask 2 with random function
   begin
     biasmask2[i] := (randomrange(-100000, 100000) / 100000);
     // Generates a random number
@@ -57,48 +56,6 @@ begin
     // Generates a random number
     // between -1 and 1
   end;
-
-
- //All initialised
-
-//-----------------------------------
-
- //First Run Calculations
-for j := 0 to 6 do
-  begin
-    for k := 0 to 6 do
-    begin
-    hiddenlayer1[j]:=hiddenlayer1[j]+(inputlayer[k]*biasmask1[7*j]);
-    end;
-//  showmessage(floattostr(hiddenlayer1[j]));
-  end;
-
-for j := 0 to 2 do
-  begin
-    for k := 0 to 6 do
-    begin
-    hiddenlayer2[j]:=hiddenlayer2[j]+(hiddenlayer1[k]*biasmask1[7*j]);
-    end;
-//  showmessage(floattostr(hiddenlayer1[j]));
-  end;
-
-
-
-
-
- //
-
-//-----------------------------------
-
- //Error Correction Algorithm
-
-
-
- //
-
-//-----------------------------------
-
-
 
 end;
 
