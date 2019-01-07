@@ -55,17 +55,8 @@ Coordinates=664,364,99,58
 [lblInstructionsLeft2]
 Coordinates=232,364,123,58
 
-[MemoContent]
-Coordinates=210,220,95,58
-
-[BindingsList1]
-Coordinates=142,230,91,36
-
 [OAuth2Authenticator1]
 Coordinates=540,80,141,278
-
-[ADOQuery1]
-Coordinates=142,78,84,58
 
 [RESTPropertiesRequest]
 Coordinates=10,160,155,102
@@ -74,7 +65,7 @@ Coordinates=10,160,155,102
 Coordinates=377,263,89,36
 
 []
-Coordinates=170,160,165,344
+Coordinates=142,230,91,36
 
 [RESTResponse]
 Coordinates=690,80,119,344

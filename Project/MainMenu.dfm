@@ -22,8 +22,8 @@ object frmMainMenu: TfrmMainMenu
   object lblTitle: TLabel
     Left = 205
     Top = 49
-    Width = 437
-    Height = 48
+    Width = 440
+    Height = 45
     Alignment = taCenter
     Anchors = []
     Caption = 'Song Suggestion Service'
@@ -56,8 +56,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsRight1: TLabel
     Left = 504
     Top = 176
-    Width = 219
-    Height = 24
+    Width = 220
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'Would you like to recall a'
@@ -72,11 +72,11 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft1: TLabel
     Left = 64
     Top = 176
-    Width = 309
-    Height = 24
+    Width = 314
+    Height = 23
     Alignment = taCenter
     Anchors = []
-    Caption = 'Please enter 3 songs that you enjoy'
+    Caption = 'Please enter 2 songs that you enjoy'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 5123625
     Font.Height = -20
@@ -88,8 +88,8 @@ object frmMainMenu: TfrmMainMenu
   object Label1: TLabel
     Left = 499
     Top = 206
-    Width = 239
-    Height = 24
+    Width = 235
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'previous recommendation?'
@@ -104,8 +104,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft2: TLabel
     Left = 56
     Top = 206
-    Width = 335
-    Height = 24
+    Width = 329
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'and would like your recommendations'
@@ -120,8 +120,8 @@ object frmMainMenu: TfrmMainMenu
   object lblInstructionsLeft3: TLabel
     Left = 144
     Top = 236
-    Width = 154
-    Height = 24
+    Width = 159
+    Height = 23
     Alignment = taCenter
     Anchors = []
     Caption = 'to be based upon:'
@@ -136,8 +136,8 @@ object frmMainMenu: TfrmMainMenu
   object Label2: TLabel
     Left = 528
     Top = 256
-    Width = 187
-    Height = 20
+    Width = 188
+    Height = 19
     Alignment = taCenter
     Anchors = []
     Caption = 'Enter the code given from'
@@ -152,14 +152,30 @@ object frmMainMenu: TfrmMainMenu
   object Label3: TLabel
     Left = 568
     Top = 282
-    Width = 105
-    Height = 20
+    Width = 108
+    Height = 19
     Alignment = taCenter
     Anchors = []
     Caption = 'your prior use:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 5123625
     Font.Height = -17
+    Font.Name = 'Roboto Lt'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlBottom
+  end
+  object Label4: TLabel
+    Left = 128
+    Top = 403
+    Width = 196
+    Height = 23
+    Alignment = taCenter
+    Anchors = []
+    Caption = 'And 1 song you dislike'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5123625
+    Font.Height = -20
     Font.Name = 'Roboto Lt'
     Font.Style = []
     ParentFont = False
@@ -181,8 +197,8 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 0
   end
   object edtSongEntry3: TEdit
-    Left = 64
-    Top = 392
+    Left = 65
+    Top = 440
     Width = 313
     Height = 32
     Color = 13021861
@@ -197,7 +213,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object edtSongEntry2: TEdit
     Left = 64
-    Top = 328
+    Top = 336
     Width = 313
     Height = 32
     Color = 13021861
@@ -234,8 +250,8 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 4
   end
   object btnSongsSearch: TButton
-    Left = 169
-    Top = 446
+    Left = 161
+    Top = 494
     Width = 129
     Height = 35
     Caption = 'Get Recommendations'
@@ -251,11 +267,13 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 6
     OnClick = btnSettingsClick
   end
-  object MemoContent: TMemo
-    Left = 423
-    Top = 472
-    Width = 259
-    Height = 105
+  object Memo1: TMemo
+    Left = 467
+    Top = 471
+    Width = 209
+    Height = 115
+    Lines.Strings = (
+      'Memo1')
     TabOrder = 7
   end
   object RESTClient: TRESTClient
@@ -265,7 +283,6 @@ object frmMainMenu: TfrmMainMenu
     BaseURL = 'https://api.spotify.com/v1'
     ContentType = 'application/json'
     Params = <>
-    HandleRedirects = True
     Left = 264
     Top = 8
   end
@@ -277,7 +294,7 @@ object frmMainMenu: TfrmMainMenu
     Params = <
       item
         Kind = pkURLSEGMENT
-        name = 'pattern'
+        Name = 'pattern'
       end>
     Resource = 'v1/search?q='
     Response = RESTResponse
@@ -291,25 +308,15 @@ object frmMainMenu: TfrmMainMenu
     Left = 376
     Top = 8
   end
-  object BindingsList1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 28
-    Top = 557
-    object LinkControlToFieldContent: TLinkControlToField
-      Category = 'Quick Bindings'
-      DataSource = RESTResponse
-      FieldName = 'Content'
-      Control = MemoContent
-      Track = False
-    end
-  end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQB1zwGYjvXOy6zir1SWL3jIC-M_6LWm15_LcwbWf7Ux2O9vZxIyCWsmrJZFEume' +
-      '4Ow-0LK_gwjOAESBg9e2r51HPdZ76AaWXeSutcdzJIGwSW_yv5g7V7IMxGHHMi-H' +
-      '71x_LLJv0LKNEQqSJpQs7yeeZYBc1ioVo5h5cA'
-    AccessTokenEndpoint = 'https://accounts.spotify.com/api/token'
+      'BQB0ECl4-TFfuSGgri0GEcxJIStCIZVOqllOFjMfMkjc_GA9Q7ogZQwJY3wJXhFf' +
+      '70RmCBdxPnv9WD8RH3U5kc24_ZvALsploFsiIWnHbW1byopUymZwvH2SGxO0Ioah' +
+      '2Z2wwn14xtGzdCEMIpjwYX_DUL943gbUcYfRNQ'
+    AuthCode = 
+      'BQBeRDPUpb2Ionw35wbylOR7LsnrH83PJSc8V0Qy_9keuE-ttyJzNmGpbbSDgKC9' +
+      '9ql6KrCjlGdJzGtlivq5fv2KSOPwk4Kc5H_0ccS-pwW1lJHisnBdS2Te_t5Z8rc1' +
+      '-oe2jqGfmhH3m5il9pUH3IhEFmYKliXEs7lIUA'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
     ClientSecret = '39fbedb9146e440dae30c9b8a85fad61'
@@ -320,18 +327,13 @@ object frmMainMenu: TfrmMainMenu
   end
   object tblSongProperties: TADOTable
     ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Des' +
-      'ktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Secu' +
-      'rity Info=False'
+      'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Doc' +
+      'uments\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist S' +
+      'ecurity Info=False'
     CursorType = ctStatic
     TableName = 'tblSongProperties'
     Left = 56
     Top = 8
-  end
-  object ADOQuery1: TADOQuery
-    Parameters = <>
-    Left = 752
-    Top = 16
   end
   object RESTPropertiesRequest: TRESTRequest
     Client = RESTClient
@@ -348,9 +350,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object tblChosenSongs: TADOTable
     ConnectionString = 
-      'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Des' +
-      'ktop\ComputingProject-master\Project\ProjectDB.accdb;Persist Sec' +
-      'urity Info=False'
+      'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Doc' +
+      'uments\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist S' +
+      'ecurity Info=False'
     CursorType = ctStatic
     TableName = 'tblChosenSongs'
     Left = 144

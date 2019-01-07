@@ -11,7 +11,7 @@ uses
   Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth,
   IdBaseComponent, IdComponent, IdCustomTCPServer, IdCustomHTTPServer,
   IdHTTPServer, IdContext, Soap.InvokeRegistry, Soap.Rio, Soap.SOAPHTTPClient,
-  IdHTTP, IdTCPConnection, IdTCPClient, System.JSON, REST.Types;
+  IdHTTP, IdTCPConnection, IdTCPClient, System.JSON, REST.Types, Vcl.ComCtrls;
 
 type
   TfrmMainMenu = class(TForm)
@@ -35,25 +35,26 @@ type
     btnPriorUse: TButton;
     btnSongsSearch: TButton;
     btnSettings: TButton;
-    MemoContent: TMemo;
-    LinkControlToFieldContent: TLinkControlToField;
-    BindingsList1: TBindingsList;
     OAuth2Authenticator1: TOAuth2Authenticator;
     tblSongProperties: TADOTable;
-    ADOQuery1: TADOQuery;
     RESTPropertiesRequest: TRESTRequest;
     DataSource1: TDataSource;
     tblChosenSongs: TADOTable;
+    Label4: TLabel;
+    Memo1: TMemo;
 
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+
 
   private
     { Private declarations }
   public
     { Public declarations }
   end;
+
+
 
 var
   frmMainMenu: TfrmMainMenu;
@@ -65,16 +66,10 @@ uses
 
 {$R *.dfm}
 
-procedure TfrmMainMenu.btnSettingsClick(Sender: TObject);
-begin
-  frmSettings.Show;
-  frmMainMenu.Hide;
-end;
 
-procedure TfrmMainMenu.btnSongsSearchClick(Sender: TObject);
+procedure TfrmMainMenu.btnSongsSearchClick(Sender: TObject); //Attempting to make it multithreaded due to the program crashing after long workload
 var
   i, k: Integer;
-  // Jsonvariables
   position, j: Integer;
   dbsendtempreal: real;
   flag: boolean;
@@ -87,25 +82,25 @@ begin
     'valence', 'tempo', 'time_signature'];
   dbfields := ['Danceability', 'Energy', 'Speechiness', 'Acousticness',
     'Valence', 'Tempo', 'Time Signature'];
-  Song1 := edtSongEntry1.Text; // More managable variable names
-  Song2 := edtSongEntry2.Text;
-  Song3 := edtSongEntry3.Text;
+  Song1 := frmMainmenu.edtSongEntry1.Text; // More managable variable names
+  Song2 := frmMainmenu.edtSongEntry2.Text;
+  Song3 := frmMainmenu.edtSongEntry3.Text;
   SongId1 := '';
   SongID2 := '';
   SongID3 := '';
 
   // First Song
 
-  RESTIdRequest.Resource := '//search?q=' + Song1 + '&type=track&limit=1';
+  frmMainmenu.RESTIdRequest.Resource := '//search?q=' + Song1 + '&type=track&limit=1';
   // Sets up the search parameters
-  RESTIdRequest.Execute; // Runs the search
+  frmMainmenu.RESTIdRequest.Execute; // Runs the search
 
   // The song ID is always followed by "is_local"
   // http://www.delphibasics.co.uk/RTL.asp?Name=ansipos
-  position := ansipos('is_local', RESTResponse.Content);
+  position := ansipos('is_local', frmMainmenu.RESTResponse.Content);
   // Finds the position of the id
 
-  response := RESTResponse.Content;
+  response := frmMainmenu.RESTResponse.Content;
 
   for i := 0 to 21 do // Adds each character of the id to the string.
   begin
@@ -114,29 +109,29 @@ begin
     SongId1 := SongId1 + test;
   end;
   // showmessage(SongId1);
-  RESTPropertiesRequest.Resource := 'audio-features/' + SongId1;
+  frmMainmenu.RESTPropertiesRequest.Resource := 'audio-features/' + SongId1;
 
   // Requests the audio features of the song.
-  RESTPropertiesRequest.Execute;
+  frmMainmenu.RESTPropertiesRequest.Execute;
   // End of Requests for song 1
   // Send To database
 
-  tblSongProperties.Open;
+  frmMainmenu.tblSongProperties.Open;
 
-  if (tblSongProperties.Locate('ID', SongId1, []) = False) then
+  if (frmMainmenu.tblSongProperties.Locate('ID', SongId1, []) = False) then
   begin
-    tblSongProperties.Edit;
-    tblSongProperties.Insert;
+    frmMainmenu.tblSongProperties.Edit;
+    frmMainmenu.tblSongProperties.Insert;
 
     // Only adds to song properties table if not already there
 
-    tblSongProperties.FieldByName('ID').AsString := SongId1;
-    tblSongProperties.FieldByName('Song Name').AsString := Song1;
+    frmMainmenu.tblSongProperties.FieldByName('ID').AsString := SongId1;
+    frmMainmenu.tblSongProperties.FieldByName('Song Name').AsString := Song1;
 
     for i := 0 to 5 do
     begin
       dbsendtemp := '';
-      response := RESTResponse.Content;
+      response := frmMainmenu.RESTResponse.Content;
       // showmessage(properties[i]);
       position := ansipos(properties[i], response);
       // showmessage(inttostr(position));
@@ -152,17 +147,17 @@ begin
       // showmessage(dbfields[i]);
       if strtofloat(dbsendtemp) <> 0 then
       begin
-        tblSongProperties.FieldByName(dbfields[i]).AsFloat := dbsendtempreal;
+        frmMainmenu.tblSongProperties.FieldByName(dbfields[i]).AsFloat := dbsendtempreal;
       end
       else
         flag := True
 
     end;
-    showmessage(RESTResponse.Content);
+    showmessage(frmMainmenu.RESTResponse.Content);
     if flag = False then
     begin
       try
-        tblSongProperties.Post;
+        frmMainmenu.tblSongProperties.Post;
         showmessage('song 1 success');
 
       except
@@ -174,8 +169,8 @@ begin
       showmessage('There is a problem with one of your search terms');
 
   end;
-  neuralnetwork.train(SongId1);
-  tblSongProperties.Close;
+
+  frmMainmenu.tblSongProperties.Close;
   flag := False;
 
 
@@ -189,13 +184,13 @@ begin
 
   // SECOND Song
 
-  RESTIdRequest.Resource := '//search?q=' + Song2 + '&type=track&limit=1';
+  frmMainmenu.RESTIdRequest.Resource := '//search?q=' + Song2 + '&type=track&limit=1';
   // Sets up the search parameters
-  RESTIdRequest.Execute; // Runs the search
+  frmMainmenu.RESTIdRequest.Execute; // Runs the search
   // The song ID is always followed by "is_local"
-  position := ansipos('is_local', RESTResponse.Content);
+  position := ansipos('is_local', frmMainmenu.RESTResponse.Content);
   // Finds the position of the id
-  response := RESTResponse.Content;
+  response := frmMainmenu.RESTResponse.Content;
   for i := 0 to 21 do // Adds each character of the id to the string.
   begin
     test := response[(position - 32 + i)];
@@ -203,25 +198,25 @@ begin
     SongID2 := SongID2 + test;
   end;
   // showmessage(SongId2);
-  RESTPropertiesRequest.Resource := 'audio-features/' + SongID2;
+  frmMainmenu.RESTPropertiesRequest.Resource := 'audio-features/' + SongID2;
   // Requests the audio features of the song.
-  RESTPropertiesRequest.Execute;
+  frmMainmenu.RESTPropertiesRequest.Execute;
   // End of Requests for song 1
   // Send To database
 
-  tblSongProperties.Open;
-  if (tblSongProperties.Locate('ID', SongID2, []) = False) then
+  frmMainmenu.tblSongProperties.Open;
+  if (frmMainmenu.tblSongProperties.Locate('ID', SongID2, []) = False) then
   begin // Only adds to song properties table if not already there
 
-    tblSongProperties.Edit;
-    tblSongProperties.Insert;
-    tblSongProperties.FieldByName('ID').AsString := SongID2;
-    tblSongProperties.FieldByName('Song Name').AsString := Song2;
+    frmMainmenu.tblSongProperties.Edit;
+    frmMainmenu.tblSongProperties.Insert;
+    frmMainmenu.tblSongProperties.FieldByName('ID').AsString := SongID2;
+    frmMainmenu.tblSongProperties.FieldByName('Song Name').AsString := Song2;
 
     for i := 0 to 5 do
     begin
       dbsendtemp := '';
-      response := RESTResponse.Content;
+      response := frmMainmenu.RESTResponse.Content;
       // showmessage(properties[i]);
       position := ansipos(properties[i], response);
       // showmessage(inttostr(position));
@@ -237,18 +232,18 @@ begin
       // showmessage(dbfields[i]);
       if strtofloat(dbsendtemp) <> 0 then
       begin
-        tblSongProperties.FieldByName(dbfields[i]).AsFloat := dbsendtempreal;
+        frmMainmenu.tblSongProperties.FieldByName(dbfields[i]).AsFloat := dbsendtempreal;
       end
       else
         flag := True
 
     end;
-    showmessage(RESTResponse.Content);
+    showmessage(frmMainmenu.RESTResponse.Content);
     if flag = False then
     begin
       try
-        tblSongProperties.Post;
-        showmessage('song 1 success');
+        frmMainmenu.tblSongProperties.Post;
+        showmessage('song 2 success');
       except
         showmessage('Error Writing to the song properties table');
 
@@ -258,48 +253,48 @@ begin
       showmessage('There is a problem with one of your search terms');
 
   end;
-  tblSongProperties.Close;
+  frmMainmenu.tblSongProperties.Close;
   flag := False;
 
 
 
   // THIRD Song
 
-  RESTIdRequest.Resource := '//search?q=' + Song3 + '&type=track&limit=1';
+  frmMainmenu.RESTIdRequest.Resource := '//search?q=' + Song3 + '&type=track&limit=1';
   // Sets up the search parameters
-  RESTIdRequest.Execute; // Runs the search
+  frmMainmenu.RESTIdRequest.Execute; // Runs the search
   // The song ID is always followed by "is_local"
   // http://www.delphibasics.co.uk/RTL.asp?Name=ansipos
-  position := ansipos('is_local', RESTResponse.Content);
+  position := ansipos('is_local', frmMainmenu.RESTResponse.Content);
   // Finds the position of the id
-  response := RESTResponse.Content;
+  response := frmMainmenu.RESTResponse.Content;
   for i := 0 to 21 do // Adds each character of the id to the string.
   begin
     test := response[(position - 32 + i)];
     // id starts 32 characters after the pos of 'is_local'
     SongID3 := SongID3 + test;
   end;
-  showmessage(SongID3);
-  RESTPropertiesRequest.Resource := 'audio-features/' + SongID3;
+  //showmessage(SongID3);
+  frmMainmenu.RESTPropertiesRequest.Resource := 'audio-features/' + SongID3;
   // Requests the audio features of the song.
-  RESTPropertiesRequest.Execute;
+  frmMainmenu.RESTPropertiesRequest.Execute;
   // End of Requests for song 2
   // Send To database
-  tblSongProperties.Open;
+  frmMainmenu.tblSongProperties.Open;
 
-  if (tblSongProperties.Locate('ID', SongID3, []) = False) then
+  if (frmMainmenu.tblSongProperties.Locate('ID', SongID3, []) = False) then
   begin // Only adds to song properties table if not already there
 
-    tblSongProperties.Edit;
-    tblSongProperties.Insert;
-    showmessage(RESTResponse.Content);
-    tblSongProperties.FieldByName('ID').AsString := SongID3;
-    tblSongProperties.FieldByName('Song Name').AsString := Song3;
+    frmMainmenu.tblSongProperties.Edit;
+    frmMainmenu.tblSongProperties.Insert;
+    showmessage(frmMainmenu.RESTResponse.Content);
+    frmMainmenu.tblSongProperties.FieldByName('ID').AsString := SongID3;
+    frmMainmenu.tblSongProperties.FieldByName('Song Name').AsString := Song3;
 
     for i := 0 to 5 do
     begin
       dbsendtemp := '';
-      response := RESTResponse.Content;
+      response := frmMainmenu.RESTResponse.Content;
       // showmessage(properties[i]);
       position := ansipos(properties[i], response);
       // showmessage(inttostr(position));
@@ -315,18 +310,18 @@ begin
       // showmessage(dbfields[i]);
       if strtofloat(dbsendtemp) <> 0 then
       begin
-        tblSongProperties.FieldByName(dbfields[i]).AsFloat := dbsendtempreal;
+        frmMainmenu.tblSongProperties.FieldByName(dbfields[i]).AsFloat := dbsendtempreal;
       end
       else
         flag := True
 
     end;
-    showmessage(RESTResponse.Content);
+    showmessage(frmMainmenu.RESTResponse.Content);
     if flag = False then
     begin
       try
-        tblSongProperties.Post;
-        showmessage('song 1 success');
+        frmMainmenu.tblSongProperties.Post;
+        showmessage('song 3 success');
       except
         showmessage('Error Writing to the song properties table');
 
@@ -335,35 +330,47 @@ begin
     else
       showmessage('There is a problem with one of your search terms');
 
-    tblSongProperties.Close;
+    frmMainmenu.tblSongProperties.Close;
   end;
   flag := False;
-  tblChosenSongs.Open;
-  tblChosenSongs.Edit;
-  tblChosenSongs.Insert;
+  frmMainmenu.tblChosenSongs.Open;
+  frmMainmenu.tblChosenSongs.Edit;
+  frmMainmenu.tblChosenSongs.Insert;
 
-  tblChosenSongs.FieldByName('Song1ID').AsString := SongId1;
-  tblChosenSongs.FieldByName('Song2ID').AsString := SongID2;
-  tblChosenSongs.FieldByName('Song3ID').AsString := SongID3;
+  frmMainmenu.tblChosenSongs.FieldByName('Song1ID').AsString := SongId1;
+  frmMainmenu.tblChosenSongs.FieldByName('Song2ID').AsString := SongID2;
+  frmMainmenu.tblChosenSongs.FieldByName('Song3ID').AsString := SongID3;
   try
-    tblChosenSongs.Post;
+    frmMainmenu.tblChosenSongs.Post;
+    neuralnetwork.train(SongId1,SongId2,SongId3);
   except
     showmessage('Error with the chosen songs table');
   end;
+
 end;
+
+procedure TfrmMainMenu.btnSettingsClick(Sender: TObject);
+begin
+  frmSettings.Show;
+  frmMainMenu.Hide;
+end;
+
 
 procedure TfrmMainMenu.FormCreate(Sender: TObject);
 begin
-  { tblChosenSongs.ConnectionString:='Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Desktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Security Info=False';
-    tblSongProperties.ConnectionString:='Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\james\Desktop\ComputingProject-master\Projec\ProjectDB.accdb;Persist Security Info=False';
-  }
+tblChosenSongs.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+tblSongProperties.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+
 
   // Connection string at home vs at school
-  tblChosenSongs.ConnectionString :=
+ { tblChosenSongs.ConnectionString :=
     'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
   tblSongProperties.ConnectionString :=
     'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
-
+  }
 end;
 
 end.
+
+
+
