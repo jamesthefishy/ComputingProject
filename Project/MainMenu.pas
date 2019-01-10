@@ -11,7 +11,8 @@ uses
   Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB, REST.Authenticator.OAuth,
   IdBaseComponent, IdComponent, IdCustomTCPServer, IdCustomHTTPServer,
   IdHTTPServer, IdContext, Soap.InvokeRegistry, Soap.Rio, Soap.SOAPHTTPClient,
-  IdHTTP, IdTCPConnection, IdTCPClient, System.JSON, REST.Types, Vcl.ComCtrls;
+  IdHTTP, IdTCPConnection, IdTCPClient, System.JSON, REST.Types, Vcl.ComCtrls,
+  GlobalValues;
 
 type
   TfrmMainMenu = class(TForm)
@@ -53,7 +54,27 @@ type
   public
     { Public declarations }
   end;
+    backgroundprocess1 = class(TThread)
+  private
 
+
+  public
+
+    procedure Execute(); override;
+
+
+  end;
+
+  backgroundprocess2 = class(TThread)
+  private
+
+
+  public
+
+    procedure Execute(); override;
+
+
+  end;
 
 
 var
@@ -65,6 +86,17 @@ uses
   Winapi.ShellApi, SettingsPage, neuralnetwork;
 
 {$R *.dfm}
+
+
+procedure backgroundprocess1.Execute();
+begin
+neuralnetwork.train(SongID1,SongId2,SongId3);
+end;
+
+procedure backgroundprocess2.Execute();
+begin
+neuralnetwork.train(SongID1,SongId2,SongId3);
+end;
 
 
 procedure TfrmMainMenu.btnSongsSearchClick(Sender: TObject); //Attempting to make it multithreaded due to the program crashing after long workload
@@ -342,7 +374,11 @@ begin
   frmMainmenu.tblChosenSongs.FieldByName('Song3ID').AsString := SongID3;
   try
     frmMainmenu.tblChosenSongs.Post;
-    neuralnetwork.train(SongId1,SongId2,SongId3);
+
+    //Threading test:
+
+    backgroundprocess1.Create(False);
+    //neuralnetwork.train(SongId1,SongId2,SongId3);
   except
     showmessage('Error with the chosen songs table');
   end;
@@ -358,16 +394,16 @@ end;
 
 procedure TfrmMainMenu.FormCreate(Sender: TObject);
 begin
-tblChosenSongs.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
-tblSongProperties.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+//tblChosenSongs.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+//tblSongProperties.ConnectionString:='Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
 
 
   // Connection string at home vs at school
- { tblChosenSongs.ConnectionString :=
+  tblChosenSongs.ConnectionString :=
     'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
   tblSongProperties.ConnectionString :=
     'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
-  }
+
 end;
 
 end.

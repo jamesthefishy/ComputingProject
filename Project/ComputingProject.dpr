@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   MainMenu in 'MainMenu.pas' {frmMainMenu},
   SettingsPage in 'SettingsPage.pas' {frmSettings},
-  neuralnetwork in 'neuralnetwork.pas';
+  neuralnetwork in 'neuralnetwork.pas',
+  GlobalValues in 'GlobalValues.pas';
 
 {$R *.res}
 

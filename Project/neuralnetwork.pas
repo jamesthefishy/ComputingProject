@@ -2,6 +2,10 @@ unit neuralnetwork;
 
 interface
 
+
+
+
+
 procedure train(songID1, SongId2, SongId3: string);
 function sigmoid(inputvalue: real): real;
 
