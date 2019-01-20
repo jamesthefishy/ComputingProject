@@ -21,8 +21,8 @@ object frmSettings: TfrmSettings
   object lblTitle: TLabel
     Left = 205
     Top = 49
-    Width = 437
-    Height = 48
+    Width = 440
+    Height = 45
     Alignment = taCenter
     Anchors = []
     Caption = 'Song Suggestion Service'
@@ -44,10 +44,11 @@ object frmSettings: TfrmSettings
       'de as seen below:'
   end
   object btnBackToMenu: TButton
-    Left = 627
+    Left = 683
     Top = 528
-    Width = 175
+    Width = 78
     Height = 49
+    Cursor = crHandPoint
     Caption = 'Back'
     Style = bsCommandLink
     TabOrder = 0
@@ -66,6 +67,7 @@ object frmSettings: TfrmSettings
     Top = 232
     Width = 75
     Height = 25
+    Cursor = crHandPoint
     Caption = 'Submit'
     TabOrder = 2
     OnClick = btnAccessCodeSubmitClick
