@@ -12,6 +12,7 @@ object frmSettings: TfrmSettings
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   OnShow = OnShow
   DesignSize = (
     810
@@ -21,8 +22,8 @@ object frmSettings: TfrmSettings
   object lblTitle: TLabel
     Left = 205
     Top = 49
-    Width = 440
-    Height = 45
+    Width = 437
+    Height = 48
     Alignment = taCenter
     Anchors = []
     Caption = 'Song Suggestion Service'

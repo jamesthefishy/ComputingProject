@@ -16,6 +16,7 @@ type
     procedure btnBackToMenuClick(Sender: TObject);
     procedure OnShow(Sender: TObject);
     procedure btnAccessCodeSubmitClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -40,6 +41,12 @@ procedure TfrmSettings.btnBackToMenuClick(Sender: TObject);
 begin
 frmSettings.hide;
 frmMainMenu.Show;
+end;
+
+procedure TfrmSettings.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
+
 end;
 
 procedure TfrmSettings.OnShow(Sender: TObject);

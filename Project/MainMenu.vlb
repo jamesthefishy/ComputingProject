@@ -61,11 +61,8 @@ Coordinates=540,80,141,278
 [RESTPropertiesRequest]
 Coordinates=10,160,155,102
 
-[DataSource1]
-Coordinates=377,263,89,36
-
 []
-Coordinates=142,230,91,36
+Coordinates=377,263,89,36
 
 [RESTResponse]
 Coordinates=690,80,119,344

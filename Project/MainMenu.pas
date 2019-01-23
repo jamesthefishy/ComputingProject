@@ -13,7 +13,7 @@ uses
   Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB,
   REST.Authenticator.OAuth,
   GlobalValues, ResultsPage, REST.Types, Data.Bind.Components,
-  Data.Bind.ObjectScope;
+  Data.Bind.ObjectScope, IPPeerClient;
 
 type
   TfrmMainMenu = class(TForm)
@@ -40,7 +40,6 @@ type
     OAuth2Authenticator1: TOAuth2Authenticator;
     tblSongProperties: TADOTable;
     RESTPropertiesRequest: TRESTRequest;
-    DataSource1: TDataSource;
     tblChosenSongs: TADOTable;
     Label4: TLabel;
     Memo1: TMemo;
@@ -48,6 +47,7 @@ type
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -84,8 +84,12 @@ uses
 {$R *.dfm}
 
 procedure backgroundprocess1.Execute();
+
 begin
   neuralnetwork.train(SongID1, SongId2, SongId3);
+      frmResultsPage.Show;
+    frmMainMenu.Hide;
+
 end;
 
 procedure backgroundprocess2.Execute();
@@ -93,9 +97,11 @@ begin
   neuralnetwork.train(SongID1, SongId2, SongId3);
 end;
 
+
 procedure TfrmMainMenu.btnSongsSearchClick(Sender: TObject);
 // Attempting to make it multithreaded due to the program crashing after long workload
 var
+
   i, k: Integer;
   position, j: Integer;
   dbsendtempreal: real;
@@ -377,8 +383,7 @@ begin
 
     // Background thread to prevent crash
     backgroundprocess1.Create(False);
-    frmResultsPage.Show;
-    frmMainMenu.Hide;
+
 
   except
     showmessage('Error with the chosen songs table');
@@ -392,19 +397,25 @@ begin
   frmMainMenu.Hide;
 end;
 
+procedure TfrmMainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
+end;
+
 procedure TfrmMainMenu.FormCreate(Sender: TObject);
 begin
-  tblChosenSongs.ConnectionString :=
-    'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
-  tblSongProperties.ConnectionString :=
-    'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+  //tblChosenSongs.ConnectionString :=
+ //   'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+ // tblSongProperties.ConnectionString :=
+ //   'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
 
 
-  // Connection string at home vs at school
-  // tblChosenSongs.ConnectionString :=
-  // 'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
-  // tblSongProperties.ConnectionString :=
-  // 'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+   //Connection string at home vs at school
+   tblChosenSongs.ConnectionString :=
+   'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+   tblSongProperties.ConnectionString :=
+   'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+
 
 end;
 
