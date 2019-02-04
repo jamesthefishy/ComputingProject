@@ -1055,7 +1055,7 @@ begin
   //
   // Confidence Calculation
   //
-  if outputvalue <= outputvalue3 then
+  if outputvalue <= (outputvalue3+0.01) then
     confidence := 0;
   if (outputvalue > outputvalue1) and (outputvalue > outputvalue2) then
   begin

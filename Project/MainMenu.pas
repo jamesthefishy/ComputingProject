@@ -187,12 +187,12 @@ begin
         flag := True
 
     end;
-    showmessage(frmMainMenu.RESTResponse.Content);
+    //showmessage(frmMainMenu.RESTResponse.Content);
     if flag = False then
     begin
       try
         frmMainMenu.tblSongProperties.Post;
-        showmessage('song 1 success');
+        //showmessage('song 1 success');
 
       except
         showmessage('Error Writing to the song properties table');
@@ -274,7 +274,7 @@ begin
         flag := True
 
     end;
-    showmessage(frmMainMenu.RESTResponse.Content);
+    //showmessage(frmMainMenu.RESTResponse.Content);
     if flag = False then
     begin
       try
@@ -324,7 +324,7 @@ begin
 
     frmMainMenu.tblSongProperties.Edit;
     frmMainMenu.tblSongProperties.Insert;
-    showmessage(frmMainMenu.RESTResponse.Content);
+    //showmessage(frmMainMenu.RESTResponse.Content);
     frmMainMenu.tblSongProperties.FieldByName('ID').AsString := SongId3;
     frmMainMenu.tblSongProperties.FieldByName('Song Name').AsString := Song3;
 
@@ -354,7 +354,7 @@ begin
         flag := True
 
     end;
-    showmessage(frmMainMenu.RESTResponse.Content);
+    //showmessage(frmMainMenu.RESTResponse.Content);
     if flag = False then
     begin
       try
@@ -404,17 +404,17 @@ end;
 
 procedure TfrmMainMenu.FormCreate(Sender: TObject);
 begin
-  //tblChosenSongs.ConnectionString :=
- //   'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
- // tblSongProperties.ConnectionString :=
- //   'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Documents\GitHub\ComputingProject\Project\ProjectDB.accdb;Persist Security Info=False';
+  tblChosenSongs.ConnectionString :=
+    'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Desktop\Project\ProjectDB.accdb;Persist Security Info=False';
+  tblSongProperties.ConnectionString :=
+    'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Desktop\Project\ProjectDB.accdb;Persist Security Info=False';
 
 
    //Connection string at home vs at school
-   tblChosenSongs.ConnectionString :=
-   'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
-   tblSongProperties.ConnectionString :=
-   'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+   //tblChosenSongs.ConnectionString :=
+   //'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
+   //tblSongProperties.ConnectionString :=
+   //'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
 
 
 end;
