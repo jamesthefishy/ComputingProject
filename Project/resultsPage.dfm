@@ -28,8 +28,8 @@ object frmResultsPage: TfrmResultsPage
     OnClick = btnBackToMenuClick
   end
   object grdProperties: TDBGrid
-    Left = 368
-    Top = 8
+    Left = 360
+    Top = 16
     Width = 417
     Height = 57
     DataSource = DataSource1
@@ -42,9 +42,9 @@ object frmResultsPage: TfrmResultsPage
     Visible = False
   end
   object Memo1: TMemo
-    Left = 192
-    Top = 208
-    Width = 433
+    Left = 160
+    Top = 160
+    Width = 505
     Height = 265
     Lines.Strings = (
       'Memo1')
@@ -58,11 +58,21 @@ object frmResultsPage: TfrmResultsPage
     CursorType = ctStatic
     TableName = 'tblSongProperties'
     Left = 424
-    Top = 72
+    Top = 88
   end
   object DataSource1: TDataSource
     DataSet = tblSongProperties
     Left = 600
+    Top = 88
+  end
+  object tblSongRecommendations: TADOTable
+    Active = True
+    ConnectionString = 
+      'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Des' +
+      'ktop\Project\ProjectDB.accdb;Persist Security Info=False'
+    CursorType = ctStatic
+    TableName = 'tblRecommendations'
+    Left = 312
     Top = 88
   end
 end

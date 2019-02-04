@@ -237,9 +237,7 @@ begin
         begin
           outputvalue3 := outputvalue3 + (hiddenlayer2[l] * biasmask3[l]);
         end;
-        frmMainmenu.Memo1.Lines.Add(floattostr(sigmoid(outputvalue1)));
-        frmMainmenu.Memo1.Lines.Add(floattostr(sigmoid(outputvalue2)));
-        frmMainmenu.Memo1.Lines.Add(floattostr(sigmoid(outputvalue3)));
+
 
         //
 
@@ -387,7 +385,7 @@ begin
         end
         else
           trendflags1[c] := 'n';
-        frmMainmenu.Memo1.Lines.Add(trendflags1[c]);
+
         biasmask2[c] := biasmask2[c] - (0.05);
         // Sets bias back to original value
         // ------------------------------------------------------------------------------
@@ -526,7 +524,7 @@ begin
         end
         else
           trendflags1[c] := 'n';
-        frmMainmenu.Memo1.Lines.Add(trendflags1[c]);
+
         biasmask2[c] := biasmask2[c] + (0.05)
         // Sets bias back to original value
       end;
@@ -668,7 +666,7 @@ begin
         end
         else
           trendflags2[c] := 'n';
-        frmMainmenu.Memo1.Lines.Add(trendflags2[c]);
+
         biasmask2[c] := biasmask2[c] - (0.05);
         // Setting the bias back to original
         // Try the reducing the bias
@@ -807,7 +805,7 @@ begin
         end
         else
           trendflags2[c] := 'n';
-        frmMainmenu.Memo1.Lines.Add(trendflags2[c]);
+
         biasmask2[c] := biasmask2[c] + (0.05)
       end;
       // ------------------------------------------------------------------------------
@@ -988,10 +986,7 @@ begin
   Until (sigmoid(outputvalue1) > sigmoid(outputvalue3)) and
     (sigmoid(outputvalue2) > sigmoid(outputvalue3));
 
-  showmessage('1:' + floattostr(sigmoid(outputvalue1)) + ' 2:' +
-    floattostr(sigmoid(outputvalue2)) + ' 3:' +
-    floattostr(sigmoid(outputvalue3)));
-
+ 
   outputvalue1 := (sigmoid(outputvalue1));
   outputvalue2 := (sigmoid(outputvalue2));
   outputvalue3 := (sigmoid(outputvalue3));

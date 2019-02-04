@@ -271,15 +271,6 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 6
     OnClick = btnSettingsClick
   end
-  object Memo1: TMemo
-    Left = 467
-    Top = 471
-    Width = 209
-    Height = 115
-    Lines.Strings = (
-      'Memo1')
-    TabOrder = 7
-  end
   object RESTClient: TRESTClient
     Authenticator = OAuth2Authenticator1
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
@@ -314,9 +305,9 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQDKun-BXfXDZGNerW57LVSzHLnpqEFFfTvi1uhli6Lbeb0-ip523jVwIrXQk8qH' +
-      '4m8NffRjOR_SrSniVDcqHXDGPGKE9JrkpbOGadt9R_Ej1gbj0bfbqjEg4_b0JTar' +
-      'zRt-ldnYrOBXDYUuJCUUwPd_2UbAaHTQAx72oQ'
+      'BQCHGAb_JTNVHGN1M8vsKz7llHkNxPzBzuUD4T5kA8Ur--YLBNyTf98WJwXLcgvX' +
+      'fA5Ybf05V7ichFi92IJFkCFIuCzzwcT2c37MftgIXI78xKhX7URG_TSJoby0lecN' +
+      'Y84xhnTA-ZTfxXRzJCR7bwZnSS1pO-tSl-z3FA'
     AuthCode = 
       'BQBeRDPUpb2Ionw35wbylOR7LsnrH83PJSc8V0Qy_9keuE-ttyJzNmGpbbSDgKC9' +
       '9ql6KrCjlGdJzGtlivq5fv2KSOPwk4Kc5H_0ccS-pwW1lJHisnBdS2Te_t5Z8rc1' +
@@ -354,5 +345,15 @@ object frmMainMenu: TfrmMainMenu
     TableName = 'tblChosenSongs'
     Left = 144
     Top = 8
+  end
+  object tblRecommendedSongs: TADOTable
+    Active = True
+    ConnectionString = 
+      'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Des' +
+      'ktop\Project\ProjectDB.accdb;Persist Security Info=False'
+    CursorType = ctStatic
+    TableName = 'tblRecommendations'
+    Left = 152
+    Top = 72
   end
 end

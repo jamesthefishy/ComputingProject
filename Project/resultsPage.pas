@@ -15,6 +15,7 @@ type
     tblSongProperties: TADOTable;
     DataSource1: TDataSource;
     Memo1: TMemo;
+    tblSongRecommendations: TADOTable;
     procedure btnBackToMenuClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -58,7 +59,7 @@ begin
   memo1.Clear;
   grdProperties.Enabled := True;
   columnsTotal := grdProperties.DataSource.DataSet.RecordCount;
-  recordstocheck := round(columnsTotal * 0.37);
+  recordstocheck := round(columnsTotal * 0.88);
   DataSource1.DataSet.First;
   for i := 1 to recordstocheck do
   begin
@@ -87,12 +88,25 @@ begin
 
   end;
 
-  Memo1.lines.Add('1: '+ topconfidencenames[1] + ' - https://open.spotify.com/embed/track/'+topconfidenceids[1]
-  +floattostr(topconfidencevalues[1]));
-  Memo1.lines.Add('2: '+ topconfidencenames[2] + ' - https://open.spotify.com/embed/track/'+topconfidenceids[2]
-  +floattostr(topconfidencevalues[2]));
-  Memo1.lines.Add('3: '+ topconfidencenames[3] + ' - https://open.spotify.com/embed/track/'+topconfidenceids[3]
-  +floattostr(topconfidencevalues[3]));
+  Memo1.lines.Add('1: '+ topconfidencenames[1] + ' - https://open.spotify.com/embed/track/'+topconfidenceids[1]);
+  Memo1.lines.Add('2: '+ topconfidencenames[2] + ' - https://open.spotify.com/embed/track/'+topconfidenceids[2]);
+  Memo1.lines.Add('3: '+ topconfidencenames[3] + ' - https://open.spotify.com/embed/track/'+topconfidenceids[3]);
+
+  frmMainMenu.tblRecommendedSongs.Open;
+  frmMainMenu.tblRecommendedSongs.Edit;
+  frmMainMenu.tblRecommendedSongs.Insert;
+
+  frmMainMenu.tblRecommendedSongs.FieldByName('Song1ID').AsString := topconfidenceids[1];
+  frmMainMenu.tblRecommendedSongs.FieldByName('Song2ID').AsString := topconfidenceids[2];
+  frmMainMenu.tblRecommendedSongs.FieldByName('Song3ID').AsString := topconfidenceids[3];
+  try
+    frmMainMenu.tblRecommendedSongs.Post;
+
+  except
+    showmessage('Error with the chosen songs table');
+  end;
+  frmMainMenu.tblRecommendedSongs.Close;
+
 
 end;
 

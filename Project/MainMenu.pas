@@ -42,7 +42,7 @@ type
     RESTPropertiesRequest: TRESTRequest;
     tblChosenSongs: TADOTable;
     Label4: TLabel;
-    Memo1: TMemo;
+    tblRecommendedSongs: TADOTable;
 
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
@@ -279,7 +279,7 @@ begin
     begin
       try
         frmMainMenu.tblSongProperties.Post;
-        showmessage('song 2 success');
+        //showmessage('song 2 success');
       except
         showmessage('Error Writing to the song properties table');
 
@@ -359,7 +359,7 @@ begin
     begin
       try
         frmMainMenu.tblSongProperties.Post;
-        showmessage('song 3 success');
+        //showmessage('song 3 success');
       except
         showmessage('Error Writing to the song properties table');
 
