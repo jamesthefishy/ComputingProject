@@ -271,6 +271,10 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 6
     OnClick = btnSettingsClick
   end
+  object ActivityIndicator1: TActivityIndicator
+    Left = 584
+    Top = 504
+  end
   object RESTClient: TRESTClient
     Authenticator = OAuth2Authenticator1
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'

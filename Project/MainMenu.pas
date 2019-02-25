@@ -13,7 +13,7 @@ uses
   Vcl.Bind.DBEngExt, Data.DB, Data.Win.ADODB,
   REST.Authenticator.OAuth,
   GlobalValues, ResultsPage, REST.Types, Data.Bind.Components,
-  Data.Bind.ObjectScope, IPPeerClient;
+  Data.Bind.ObjectScope, IPPeerClient, Vcl.WinXCtrls;
 
 type
   TfrmMainMenu = class(TForm)
@@ -43,6 +43,7 @@ type
     tblChosenSongs: TADOTable;
     Label4: TLabel;
     tblRecommendedSongs: TADOTable;
+    ActivityIndicator1: TActivityIndicator;
 
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
