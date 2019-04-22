@@ -43,12 +43,13 @@ type
     tblChosenSongs: TADOTable;
     Label4: TLabel;
     tblRecommendedSongs: TADOTable;
-    ActivityIndicator1: TActivityIndicator;
 
     procedure btnSongsSearchClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure btnPriorUseClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -88,14 +89,16 @@ procedure backgroundprocess1.Execute();
 
 begin
   neuralnetwork.train(SongID1, SongId2, SongId3);
-      frmResultsPage.Show;
-    frmMainMenu.Hide;
+  frmMainMenu.tblChosenSongs.Close;
+  frmResultsPage.Show;
+  frmMainMenu.Hide;
 
 end;
 
 procedure backgroundprocess2.Execute();
 begin
   neuralnetwork.train(SongID1, SongId2, SongId3);
+      frmMainMenu.tblChosenSongs.Close;
 end;
 
 
@@ -392,6 +395,19 @@ begin
 
 end;
 
+procedure TfrmMainMenu.btnPriorUseClick(Sender: TObject);
+begin
+try
+strtoint(edtCodeEntry.Text);
+recallflag:=true;
+frmResultsPage.Show;
+frmMainmenu.Hide;
+except
+showmessage('This is not the correct format of code');
+end;
+
+end;
+
 procedure TfrmMainMenu.btnSettingsClick(Sender: TObject);
 begin
   frmSettings.Show;
@@ -402,8 +418,8 @@ procedure TfrmMainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 Application.Terminate;
 end;
-
 procedure TfrmMainMenu.FormCreate(Sender: TObject);
+
 begin
   tblChosenSongs.ConnectionString :=
     'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\james\Desktop\Project\ProjectDB.accdb;Persist Security Info=False';
@@ -417,6 +433,12 @@ begin
    //tblSongProperties.ConnectionString :=
    //'Provider=Microsoft.ACE.OLEDB.16.0;Data Source=N:\Computing Project\Project\Projectdb.accdb;Persist Security Info=False';
 
+
+end;
+
+procedure TfrmMainMenu.FormShow(Sender: TObject);
+begin
+recallflag:=False;
 
 end;
 

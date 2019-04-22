@@ -15,6 +15,7 @@ object frmMainMenu: TfrmMainMenu
   Position = poDesigned
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   DesignSize = (
     810
     610)
@@ -47,7 +48,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object shpEntryBackhroundRight: TShape
     Left = 448
-    Top = 176
+    Top = 160
     Width = 337
     Height = 281
     Brush.Color = 14471111
@@ -250,6 +251,7 @@ object frmMainMenu: TfrmMainMenu
     Cursor = crHandPoint
     Caption = 'Search'
     TabOrder = 4
+    OnClick = btnPriorUseClick
   end
   object btnSongsSearch: TButton
     Left = 161
@@ -270,10 +272,6 @@ object frmMainMenu: TfrmMainMenu
     Caption = 'Settings'
     TabOrder = 6
     OnClick = btnSettingsClick
-  end
-  object ActivityIndicator1: TActivityIndicator
-    Left = 584
-    Top = 504
   end
   object RESTClient: TRESTClient
     Authenticator = OAuth2Authenticator1
@@ -309,13 +307,13 @@ object frmMainMenu: TfrmMainMenu
   end
   object OAuth2Authenticator1: TOAuth2Authenticator
     AccessToken = 
-      'BQCHGAb_JTNVHGN1M8vsKz7llHkNxPzBzuUD4T5kA8Ur--YLBNyTf98WJwXLcgvX' +
-      'fA5Ybf05V7ichFi92IJFkCFIuCzzwcT2c37MftgIXI78xKhX7URG_TSJoby0lecN' +
-      'Y84xhnTA-ZTfxXRzJCR7bwZnSS1pO-tSl-z3FA'
+      'BQBVNw0-ZWGG6xDIc3kQo-1R1k8iWvIsI5NWZYMHaoIZX3uEgrcebZ0Q1l4O-1Yk' +
+      'OJ3zn8xX-6VWMqJOIx2jtoTD4AzCAz5cav9_RUeKFVd6A3NKk8dtlWsWzOgPARBL' +
+      '7XB-Uw1iEggA-9tNl30CsIMSj2dImic7aKkbGg'
     AuthCode = 
-      'BQBeRDPUpb2Ionw35wbylOR7LsnrH83PJSc8V0Qy_9keuE-ttyJzNmGpbbSDgKC9' +
-      '9ql6KrCjlGdJzGtlivq5fv2KSOPwk4Kc5H_0ccS-pwW1lJHisnBdS2Te_t5Z8rc1' +
-      '-oe2jqGfmhH3m5il9pUH3IhEFmYKliXEs7lIUA'
+      'BQDlRemm0wbdlwiNMBb0_Cn2VQHHiMxE4Q9Q1GSRwNQHTvIVKw0o-EqirFKElZEk' +
+      'A5r5gAWogtAQZgYhvlB3S9JdBQuZfwlW-eG7t5nzAEZ4rp-hLi_eZNkKhgt9SBcL' +
+      '-hEpwNxmbOgbcf5biyRqKMi6Rw6OlCZTnNPcdA'
     AuthorizationEndpoint = 'https://accounts.spotify.com/authorize'
     ClientID = 'e7b2c8f2ecf04736be11b1cb493cdd9d'
     ClientSecret = '39fbedb9146e440dae30c9b8a85fad61'

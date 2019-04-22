@@ -22,8 +22,8 @@ object frmSettings: TfrmSettings
   object lblTitle: TLabel
     Left = 205
     Top = 49
-    Width = 437
-    Height = 48
+    Width = 440
+    Height = 45
     Alignment = taCenter
     Anchors = []
     Caption = 'Song Suggestion Service'
