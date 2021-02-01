@@ -1,4 +1,5 @@
 # ComputingProject - James Page 2018/19
-# Neural Network Music Recommendation
-# Analysis - 1st Version Complete 11/10/18
-# Design - Algorithms and data to complete 
+## A poor implementation of a neural network based AI
+## Improvements:
+### Any attempt at non-random learning approach, simple greedy descent approach would be usable
+### Make use of existing libraries to implement a better more efficient neural network and learning methods.
